@@ -3,9 +3,9 @@
 This Git Repo is for the CSE6242 D.V.A - Group Project
 
 
-Institution: Georgia Institute of Technology 
-Programs of Study: OMSA, OMSCS 
-Class: CSE6242 Digital Visualizations and Analytics 
+Institution: Georgia Institute of Technology,  
+Programs of Study: OMSA, OMSCS,  
+Class: CSE6242 Digital Visualizations and Analytics,  
 Semester: Spring 2022 
 
 
