@@ -8,12 +8,6 @@ Programs of Study: OMSA, OMSCS
 Class: CSE6242 Digital Visualizations and Analytics
 Semester: Spring 2022
 
-## Topic: TBD
-
-## Overview: TBD
-
-## Primary Components: TBD
-
 
 ## Contributors
 
@@ -23,5 +17,13 @@ Katelyn Dever,
 Kerri Robinson,  
 Miller Love,   
 Tyler Wooley 
+
+## Topic: TBD
+
+## Overview: TBD
+
+## Primary Components: TBD
+
+
 
 
