@@ -8,14 +8,14 @@ Programs of Study: OMSA, OMSCS
 Class: CSE6242 Digital Visualizations and Analytics
 Semester: Spring 2022
 
-##Topic: TBD
+## Topic: TBD
 
-##Overview: TBD
+## Overview: TBD
 
-##Primary Components: TBD
+## Primary Components: TBD
 
 
-# Contributors
+## Contributors
 
 Alexander Long,  
 Benjamin Jury,  
