@@ -16,7 +16,7 @@ Benjamin Jury,
 Katelyn Dever,  
 Kerri Robinson,  
 Miller Love,   
-Tyler Wooley 
+Tyler WoolLey 
 
 ## Topic: TBD
 
