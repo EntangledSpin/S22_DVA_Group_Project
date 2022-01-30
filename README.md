@@ -19,9 +19,9 @@ Primary Components: TBD
 
 Alexander Long,  
 Benjamin Jury,  
-Katelyn Dever, 
-Kerri Robinson, 
-Miller Love,  
+Katelyn Dever,  
+Kerri Robinson,  
+Miller Love,   
 Tyler Wooley 
 
 
