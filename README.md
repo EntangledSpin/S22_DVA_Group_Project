@@ -17,11 +17,11 @@ Primary Components: TBD
 
 # Contributors
 
-Alexander Long 
-Benjamin Jury 
-Katelyn Dever 
-Kerri Robinson 
-Miller Love 
+Alexander Long,  
+Benjamin Jury,  
+Katelyn Dever, 
+Kerri Robinson, 
+Miller Love,  
 Tyler Wooley 
 
 
