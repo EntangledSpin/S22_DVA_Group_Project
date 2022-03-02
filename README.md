@@ -12,13 +12,12 @@ Semester: Spring 2022
 ## Contributors
 
 Alexander Long,  
-Benjamin Jury,  
-Katelyn Dever,  
+Benjamin Jury,
 Kerri Robinson,  
 Miller Love,   
 Tyler Woolley 
 
-## Topic: TBD
+## Topic: Spotify Podcast Transcripts Analysis
 
 ## Overview: TBD
 
