@@ -20,9 +20,9 @@ sql_folder = os.path.join(os.path.abspath("."),"sql")
 language = "en"
 max_ngram_size = 3
 deduplication_threshold = .9
-deduplication_function = 'variable'
+deduplication_function = 'jeve'
 windows_size = 1
-num_of_keywords = 20
+num_of_keywords = 'Variable'
 features = None
 stop_words = None
 #### Adding Expirement Information
@@ -44,7 +44,7 @@ notes = """Iterating through deduplication algos ['leve','jaro','seqm']"""
 
 
 ###################Adding Experiment to table#################################
-ADD_EXPIREMENT = True
+ADD_EXPIREMENT = False
 
 if ADD_EXPIREMENT:
     experiment = pd.DataFrame([{"date": datetime.date.today(),
@@ -61,14 +61,14 @@ if ADD_EXPIREMENT:
 
 
 ## Keyword Extraction Parameters####
-UPLOAD = True
+UPLOAD = False
 
-ep_ids_10_file_path = os.path.join(sql_folder,'episode_ids_limit_10_experiments.sql')
+ep_ids_10_file_path = os.path.join(sql_folder,'episode_ids_limit_10_random.sql')
 ep_text_file_path = os.path.join(sql_folder,'episode_text.sql')
 ep_keywords_file_path = os.path.join(sql_folder,'episode_keywords.sql')
 
 ### change this list for correct param increments
-param_list = ['jeve','jaro','seqm']
+param_list = [5, 10]
 
 # print (ep_ids_file_path)
 
@@ -83,9 +83,9 @@ for i in param_list:
     language = language
     max_ngram_size = max_ngram_size
     deduplication_threshold = deduplication_threshold
-    deduplication_function =  i
+    deduplication_function = deduplication_function
     windows_size = windows_size
-    num_of_keywords = num_of_keywords
+    num_of_keywords = i
     features = features
     stop_words = stop_words
 
