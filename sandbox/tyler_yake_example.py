@@ -25,7 +25,11 @@ features = None
 
 podcast_custom_stop_words = ["yeah", "he", "she", "his", "hers", "because",
                              "him", "see", "thing", "know", "is", "him",
-                             "her"]
+                             "her", "can", "like", "okay", "ok", "going", "just",
+                             "yes", "no", "now", "here", "say", "who",
+                             "will", "well", "making", "think", "back", "far",
+                             "maybe", "bit", "way", "come", "let", "gonna"]
+
 stop_words_lst = custom_stopwords.stopwords_starter_list + podcast_custom_stop_words
 
 stop_words = stop_words_lst
@@ -66,7 +70,7 @@ if ADD_EXPIREMENT:
 ## Keyword Extraction Parameters####
 UPLOAD = True
 
-ep_ids_10_file_path = os.path.join(sql_folder,'tyler_rock_metal_podcast.sql')
+ep_ids_10_file_path = os.path.join(sql_folder,'tyler_harry_potter_podcast.sql')
 ep_text_file_path = os.path.join(sql_folder,'episode_text.sql')
 
 ### change this list for correct param increments
@@ -141,13 +145,14 @@ for i in param_list:
         for keyword in keywords:
             keyword_list.append(keyword[0])
 
+        print(keyword_list)
+
         if i == "jeve":
             jeve_keyword_lists.append(keyword_list)
         elif i == "jaro":
             jaro_keyword_lists.append(keyword_list)
         else:
             seqm_keyword_lists.append(keyword_list)
-
 
         keyword_dict['results']['keywords'] = keyword_list
 
@@ -162,6 +167,7 @@ for i in param_list:
 
         count +=1
         remaining = total_episodes - count
+
 print("---")
 print("Getting keywords that are in all 3 parameter keyword lists...")
 # only keep keywords that are in all 3 param keyword lists
@@ -174,13 +180,15 @@ for j in range(len(jeve_keyword_lists)):
     int1 = jeve_set_lst.intersection(jaro_set_lst)
     int2 = int1.intersection(seqm_set_lst)
 
+    print(list(int2))
+
     all_3_param_keywords_lst.append(list(int2))
 
+print("---")
 print("Getting most common words among all 3 param keyword lists...")
 flattened = list(itertools.chain(*all_3_param_keywords_lst))
 counter_of_flat_list = Counter(flattened)
 
-print("---")
 most_common_10_words = counter_of_flat_list.most_common(10)
 
 final_lst = []
