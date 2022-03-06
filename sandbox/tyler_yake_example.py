@@ -8,6 +8,8 @@ import os
 import uuid
 import numpy as np
 import custom_stopwords
+import itertools
+from collections import Counter
 
 db = Database() #Database Object
 sql_folder = os.path.join(os.path.abspath("."),"sql")
@@ -21,8 +23,9 @@ windows_size = 2
 num_of_keywords = 10
 features = None
 
-podcast_custom_stop_words = ["yeah", "he", "she", "his", "hers", "because"
-                             "him", "see", "thing", "know", "is", "him"]
+podcast_custom_stop_words = ["yeah", "he", "she", "his", "hers", "because",
+                             "him", "see", "thing", "know", "is", "him",
+                             "her"]
 stop_words_lst = custom_stopwords.stopwords_starter_list + podcast_custom_stop_words
 
 stop_words = stop_words_lst
@@ -63,19 +66,21 @@ if ADD_EXPIREMENT:
 ## Keyword Extraction Parameters####
 UPLOAD = True
 
-#ep_ids_10_file_path = os.path.join(sql_folder,'episode_ids_limit_10_experiments.sql')
-#ep_text_file_path = os.path.join(sql_folder,'episode_text.sql')
-
 ep_ids_10_file_path = os.path.join(sql_folder,'tyler_rock_metal_podcast.sql')
 ep_text_file_path = os.path.join(sql_folder,'episode_text.sql')
 
 ### change this list for correct param increments
 # just using one dedupe param for simplicity in understanding yake
-#param_list = ['jeve','jaro','seqm']
-param_list = ['jeve']
+param_list = ['jeve','jaro','seqm']
+#param_list = ['jeve']
+
+jeve_keyword_lists = []
+jaro_keyword_lists = []
+seqm_keyword_lists = []
 
 ## Iterating through parameters for keyword extraction on 100 episodes per parameter value
 for i in param_list:
+    print("Running:", i)
 
     ## Custom YAKE parameters
     ## ensure i is assigned to expiremental parameter - with
@@ -136,7 +141,13 @@ for i in param_list:
         for keyword in keywords:
             keyword_list.append(keyword[0])
 
-        print(keyword_list)
+        if i == "jeve":
+            jeve_keyword_lists.append(keyword_list)
+        elif i == "jaro":
+            jaro_keyword_lists.append(keyword_list)
+        else:
+            seqm_keyword_lists.append(keyword_list)
+
 
         keyword_dict['results']['keywords'] = keyword_list
 
@@ -151,3 +162,32 @@ for i in param_list:
 
         count +=1
         remaining = total_episodes - count
+print("---")
+print("Getting keywords that are in all 3 parameter keyword lists...")
+# only keep keywords that are in all 3 param keyword lists
+all_3_param_keywords_lst = []
+for j in range(len(jeve_keyword_lists)):
+    jeve_set_lst = set(jeve_keyword_lists[j])
+    jaro_set_lst = set(jaro_keyword_lists[j])
+    seqm_set_lst = set(seqm_keyword_lists[j])
+
+    int1 = jeve_set_lst.intersection(jaro_set_lst)
+    int2 = int1.intersection(seqm_set_lst)
+
+    all_3_param_keywords_lst.append(list(int2))
+
+print("Getting most common words among all 3 param keyword lists...")
+flattened = list(itertools.chain(*all_3_param_keywords_lst))
+counter_of_flat_list = Counter(flattened)
+
+print("---")
+most_common_10_words = counter_of_flat_list.most_common(10)
+
+final_lst = []
+for k in range(len(most_common_10_words)):
+    final_lst.append(most_common_10_words[k][0])
+
+print(final_lst)
+
+
+
