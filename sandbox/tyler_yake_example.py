@@ -69,138 +69,157 @@ if ADD_EXPIREMENT:
 
 UPLOAD = True
 
-episodes_query = os.path.join(sql_folder,'tyler_mult_shows_episode_ids.sql')
 shows_query = os.path.join(sql_folder,'tyler_mult_shows_show_ids.sql')
 ep_text_file_path = os.path.join(sql_folder,'episode_text.sql')
 
 param_list = ['jeve','jaro','seqm']
 
-jeve_keyword_lists = []
-jaro_keyword_lists = []
-seqm_keyword_lists = []
-
 # pulls in unique show ids
-shows = db.execute_sql(sql_path=shows_query, return_list=True)
-print(shows)
+shows = db.execute_sql('''
+    select distinct show_uri_id 
+    from datalake.shows_with_5_episodes_or_more;
+''', return_list=True)
 
-# TODO
-# for each unique show
-    # query the specific episodes for each show by using the sql_text logic
-    # bababooey
+shows = shows[:50]
+list_of_shows_and_keywords = []
+count = 1
 
-for i in param_list:
-    print("Running:", i)
+print("")
+print("Extracting keywords for all the shows...")
+print("")
 
-    deduplication_function = i
+# loop through all the shows
+for show in shows:
+    print("show", count, "-", show)
 
-    custom_kw_extractor = yake.KeywordExtractor(lan=language,
-                                                n=max_ngram_size,
-                                                dedupLim=deduplication_threshold,
-                                                dedupFunc=deduplication_function,
-                                                top=num_of_keywords,
-                                                features=features,
-                                                stopwords=stop_words,
-                                                windowsSize=windows_size,)
+    # for each show, give it an empty list for each dedupe param
+    jeve_keyword_lists = []
+    jaro_keyword_lists = []
+    seqm_keyword_lists = []
 
-    episodes = db.execute_sql(sql_path=episodes_query,return_list=True)
-    print(episodes)
+    show_keyword_dict = dict()
 
-    for id in episodes:
-        keyword_list = []
+    for i in param_list:
+        deduplication_function = i
 
-        keyword_dict = dict({'date':datetime.date.today(),
-                             'expirement_uuid':experiment_id,
-                             'episode_uri_id': id,
-                             'algorithm': "YAKE",
-                             'results': {"keywords":[]},
-                             'parameters': {'lan': language,
-                                            'dedupLim': deduplication_threshold,
-                                            'dedupFunc': deduplication_function,
-                                            'n': max_ngram_size,
-                                            'top': num_of_keywords,
-                                            'features':features,
-                                            'stopwords':stop_words,
-                                            'windowsSize':windows_size
-                                            }
-                             })
+        custom_kw_extractor = yake.KeywordExtractor(lan=language,
+                                                    n=max_ngram_size,
+                                                    dedupLim=deduplication_threshold,
+                                                    dedupFunc=deduplication_function,
+                                                    top=num_of_keywords,
+                                                    features=features,
+                                                    stopwords=stop_words,
+                                                    windowsSize=windows_size,)
 
-        sql_text = db.read_sql_path(ep_text_file_path)
-        sql_text = sql_text.replace('REPLACEME_ID',id)
+        episodes = db.execute_sql('''
+                select episode_uri_id
+                from datalake.raw_podcast_transcripts
+                WHERE show_uri_id = '{REPLACEME_ID}';
+            '''.format(REPLACEME_ID=show), return_list=True)
 
-        text = db.execute_sql(sql=sql_text, return_list=True)[0]
+        for id in episodes:
+            keyword_list = []
 
-        keywords = custom_kw_extractor.extract_keywords(text)
+            keyword_dict = dict({'date':datetime.date.today(),
+                                 'expirement_uuid':experiment_id,
+                                 'episode_uri_id': id,
+                                 'algorithm': "YAKE",
+                                 'results': {"keywords":[]},
+                                 'parameters': {'lan': language,
+                                                'dedupLim': deduplication_threshold,
+                                                'dedupFunc': deduplication_function,
+                                                'n': max_ngram_size,
+                                                'top': num_of_keywords,
+                                                'features':features,
+                                                'stopwords':stop_words,
+                                                'windowsSize':windows_size
+                                                }
+                                 })
 
-        for keyword in keywords:
-            keyword_list.append(keyword[0])
+            sql_text = db.read_sql_path(ep_text_file_path)
+            sql_text = sql_text.replace('REPLACEME_ID',id)
+            text = db.execute_sql(sql=sql_text, return_list=True)[0]
 
-        print(keyword_list)
+            keywords = custom_kw_extractor.extract_keywords(text)
 
-        if i == "jeve":
-            jeve_keyword_lists.append(keyword_list)
-        elif i == "jaro":
-            jaro_keyword_lists.append(keyword_list)
-        else:
-            seqm_keyword_lists.append(keyword_list)
+            for keyword in keywords:
+                keyword_list.append(keyword[0])
 
-        keyword_dict['results']['keywords'] = keyword_list
+            if i == "jeve":
+                jeve_keyword_lists.append(keyword_list)
+            elif i == "jaro":
+                jaro_keyword_lists.append(keyword_list)
+            else:
+                seqm_keyword_lists.append(keyword_list)
 
-        keyword_df = pd.DataFrame([keyword_dict])
+            keyword_dict['results']['keywords'] = keyword_list
 
-        keyword_df['parameters'] = list(map(lambda x: json.dumps(x), keyword_df['parameters']))
-        keyword_df['results'] = list(map(lambda x: json.dumps(x), keyword_df['results']))
+            keyword_df = pd.DataFrame([keyword_dict])
 
-        if UPLOAD:
-            keyword_df.to_sql('keyword_extraction_results', index=False,
-                              schema='datalake', con=db.engine, if_exists="append")
+            keyword_df['parameters'] = list(map(lambda x: json.dumps(x), keyword_df['parameters']))
+            keyword_df['results'] = list(map(lambda x: json.dumps(x), keyword_df['results']))
 
-print("---")
-print("Getting keywords that are in all 3 parameter keyword lists...")
-# only keep keywords that are in all 3 param keyword lists
-all_3_param_keywords_lst = []
-for j in range(len(jeve_keyword_lists)):
-    jeve_set_lst = set(jeve_keyword_lists[j])
-    jaro_set_lst = set(jaro_keyword_lists[j])
-    seqm_set_lst = set(seqm_keyword_lists[j])
+            if UPLOAD:
+                keyword_df.to_sql('keyword_extraction_results', index=False,
+                                  schema='datalake', con=db.engine, if_exists="append")
 
-    int1 = jeve_set_lst.intersection(jaro_set_lst)
-    int2 = int1.intersection(seqm_set_lst)
+    # only keep keywords that are in all 3 param keyword lists
+    all_3_param_keywords_lst = []
+    for j in range(len(jeve_keyword_lists)):
+        jeve_set_lst = set(jeve_keyword_lists[j])
+        jaro_set_lst = set(jaro_keyword_lists[j])
+        seqm_set_lst = set(seqm_keyword_lists[j])
 
-    print(list(int2))
+        int1 = jeve_set_lst.intersection(jaro_set_lst)
+        int2 = int1.intersection(seqm_set_lst)
 
-    all_3_param_keywords_lst.append(list(int2))
+        all_3_param_keywords_lst.append(list(int2))
 
+    # only keep keywords that are in all 3 param keyword lists
+    all_3_param_keywords_lst = []
+    for j in range(len(jeve_keyword_lists)):
+        jeve_set_lst = set(jeve_keyword_lists[j])
+        jaro_set_lst = set(jaro_keyword_lists[j])
+        seqm_set_lst = set(seqm_keyword_lists[j])
 
-print("---")
-print("Getting keywords that are in all 3 parameter keyword lists...")
-# only keep keywords that are in all 3 param keyword lists
-all_3_param_keywords_lst = []
-for j in range(len(jeve_keyword_lists)):
-    jeve_set_lst = set(jeve_keyword_lists[j])
-    jaro_set_lst = set(jaro_keyword_lists[j])
-    seqm_set_lst = set(seqm_keyword_lists[j])
+        int1 = jeve_set_lst.intersection(jaro_set_lst)
+        int2 = int1.intersection(seqm_set_lst)
 
-    int1 = jeve_set_lst.intersection(jaro_set_lst)
-    int2 = int1.intersection(seqm_set_lst)
+        all_3_param_keywords_lst.append(list(int2))
 
-    print(list(int2))
+    flattened = list(itertools.chain(*all_3_param_keywords_lst))
+    counter_of_flat_list = Counter(flattened)
 
-    all_3_param_keywords_lst.append(list(int2))
+    show_most_common_words = counter_of_flat_list.most_common()
 
-print("---")
-print("Getting most common words among all 3 param keyword lists...")
-flattened = list(itertools.chain(*all_3_param_keywords_lst))
-counter_of_flat_list = Counter(flattened)
+    len_most_common_words = len(show_most_common_words)
+    twenty_percent_keys = math.floor(len_most_common_words * 0.2)
 
-show_most_common_words = counter_of_flat_list.most_common()
+    final_lst = []
+    for k in range(twenty_percent_keys):
+        final_lst.append(show_most_common_words[k][0])
 
-len_most_common_words = len(show_most_common_words)
-twenty_percent_keys = math.floor(len_most_common_words * 0.2)
+    show_keyword_dict["show_id"] = show
+    show_keyword_dict["keywords"] = final_lst
 
-final_lst = []
-for k in range(twenty_percent_keys):
-    final_lst.append(show_most_common_words[k][0])
+    list_of_shows_and_keywords.append(show_keyword_dict)
 
-print(final_lst)
+    count += 1
+
+print("")
+print("Loading shows and keywords into database...")
+
+# load shows and keywords into table
+for show_and_keywords in list_of_shows_and_keywords:
+    show_keyword_data = pd.DataFrame([{"show_and_keywords": show_and_keywords}])
+
+    show_keyword_data['show_and_keywords'] = list(map(lambda x: json.dumps(x),
+                                               show_keyword_data['show_and_keywords']))
+
+    show_keyword_data.to_sql('sample_shows_and_keywords', index=False,
+                      schema='datalake', con=db.engine, if_exists="append")
+
+print("")
+print("Complete!")
 
 
