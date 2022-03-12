@@ -12,8 +12,6 @@ import itertools
 from collections import Counter
 import math
 
-# test
-
 db = Database() #Database Object
 sql_folder = os.path.join(os.path.abspath("."),"sql")
 
@@ -25,18 +23,12 @@ windows_size = 2
 num_of_keywords = 10
 features = None
 
-podcast_custom_stop_words = ["yeah", "he", "she", "his", "hers", "because",
-                             "him", "see", "thing", "know", "is", "him",
-                             "her", "can", "like", "okay", "ok", "going", "just",
-                             "yes", "no", "now", "here", "say", "who",
-                             "will", "well", "making", "think", "back", "far",
-                             "maybe", "bit", "way", "come", "let", "gonna",
-                             "want", "Hey", "guys", "crazy", "kind", "right",
-                             "mean", "may", "new", "great", "New", "being"]
-
-stop_words_lst = custom_stopwords.stopwords_starter_list + podcast_custom_stop_words
-
-stop_words = stop_words_lst
+# add new stop words in LOWERCASE only
+# stopwords only seem to be removed if in lowercase
+podcast_custom_stop_words = ["actually", "only", "guys", "hold", "saying",
+                             "fucking", "went", "guy", "cuz", "still",
+                             "told"]
+stop_words = custom_stopwords.stopwords_starter_list + podcast_custom_stop_words
 
 experiment_id = uuid.uuid4()
 
@@ -71,9 +63,6 @@ if ADD_EXPIREMENT:
 
 UPLOAD = True
 
-shows_query = os.path.join(sql_folder,'tyler_mult_shows_show_ids.sql')
-ep_text_file_path = os.path.join(sql_folder,'episode_text.sql')
-
 param_list = ['jeve','jaro','seqm']
 
 # pulls in unique show ids
@@ -82,7 +71,8 @@ shows = db.execute_sql('''
     from datalake.shows_with_5_episodes_or_more;
 ''', return_list=True)
 
-shows = shows[:50]
+# 1470 shows
+shows = shows[:5]
 list_of_shows_and_keywords = []
 count = 1
 
@@ -138,9 +128,13 @@ for show in shows:
                                                 }
                                  })
 
-            sql_text = db.read_sql_path(ep_text_file_path)
-            sql_text = sql_text.replace('REPLACEME_ID',id)
-            text = db.execute_sql(sql=sql_text, return_list=True)[0]
+            #sql_text = db.read_sql_path(ep_text_file_path)
+            #sql_text = sql_text.replace('REPLACEME_ID',id)
+            text = db.execute_sql('''
+            select lower(transcript)
+            from datalake.raw_podcast_transcripts 
+            where episode_uri_id = '{REPLACEME_ID}';
+            '''.format(REPLACEME_ID=id), return_list=True)[0]
 
             keywords = custom_kw_extractor.extract_keywords(text)
 
@@ -220,6 +214,7 @@ for show_and_keywords in list_of_shows_and_keywords:
 
     show_keyword_data.to_sql('sample_shows_and_keywords', index=False,
                       schema='datalake', con=db.engine, if_exists="append")
+
 
 print("")
 print("Complete!")
