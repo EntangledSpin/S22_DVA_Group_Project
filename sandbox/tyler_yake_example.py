@@ -12,14 +12,12 @@ import itertools
 from collections import Counter
 import math
 
-# test
-
-db = Database() #Database Object
+db = Database()
 
 language = "en"
 max_ngram_size = 2
 deduplication_threshold = 0.7
-deduplication_function = 'variable'
+deduplication_function = 'seqm'
 windows_size = 3
 num_of_keywords = 10
 features = None
@@ -35,11 +33,13 @@ stop_words = custom_stopwords.stopwords_starter_list + podcast_custom_stop_words
 
 # pulls in unique show ids
 shows = db.execute_sql('''
-    select distinct show_uri_id 
-    from datalake.shows_with_10_episodes_or_more;
+    select distinct show_uri_id
+    from datalake.raw_podcast_transcripts
+    group by show_uri_id
+    having count(*) >= 10;
 ''', return_list=True)
 
-shows = shows[:100]
+shows = shows[:10]
 list_of_shows_and_keywords = []
 count = 1
 
@@ -52,8 +52,6 @@ for show in shows:
     print("show", count, "-", show)
 
     seqm_keyword_lists = []
-    deduplication_function = "seqm"
-
     show_keyword_dict = dict()
 
     custom_kw_extractor = yake.KeywordExtractor(lan=language,
