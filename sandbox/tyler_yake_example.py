@@ -12,6 +12,8 @@ import itertools
 from collections import Counter
 import math
 
+# test
+
 db = Database() #Database Object
 
 language = "en"
