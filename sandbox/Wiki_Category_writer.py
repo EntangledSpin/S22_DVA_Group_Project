@@ -1,5 +1,4 @@
 import json
-
 from db_core.database import Database
 from sandbox.DBpedia_labeler import annotator
 import os

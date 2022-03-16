@@ -1,11 +1,12 @@
 import spacy_dbpedia_spotlight
 from SPARQLWrapper import SPARQLWrapper, JSON
 import json
+import re
 from db_core.database import Database
 from collections import defaultdict
 
 
-def annotator(keywords: 'list', confidence=0.5, verbose=False):
+def annotator(keywords: 'list', confidence=0.5, verbose=False, split_camel_case=False):
     # create nlp pipe
     nlp = spacy_dbpedia_spotlight.create('en')
     nlp.get_pipe('dbpedia_spotlight').overwrite_ents = False
@@ -39,8 +40,19 @@ def annotator(keywords: 'list', confidence=0.5, verbose=False):
         sparql.setReturnFormat(JSON)
 
         subjects = sparql.query().convert()
-        for j in subjects['results']['bindings']:
-            results.append(j['subject']['value'][37:])
+
+        if split_camel_case:
+            for j in subjects['results']['bindings']:
+                        word = j['subject']['value'][37:].replace(',', '')
+                        camel_case = re.finditer('.+?(?:(?<=[a-z])(?=[A-Z])|(?<=[A-Z,])(?=[A-Z][a-z])|$)', j['subject']['value'][37:])
+                        camel_list = [c.group(0) for c in camel_case]
+                        for l in camel_list:
+                            results.append(l)
+
+        else:
+            for j in subjects['results']['bindings']:
+                results.append(j['subject']['value'][37:])
+
             if verbose:
                 print(j)
         done.append(i[0])
@@ -69,6 +81,6 @@ if __name__ == '__main__':
 
         keywords = json.loads(keyword_list[0])['keywords']  # loads list of keywords
 
-        test_dict[episode] = annotator(keywords, confidence=0.5, verbose=False)  # annotates keyword list, generates yago types, and adds to dict
+        test_dict[episode] = annotator(keywords, confidence=0.5, verbose=False, split_camel_case=True)  # annotates keyword list, generates yago types, and adds to dict
 
     print(dict(test_dict))
