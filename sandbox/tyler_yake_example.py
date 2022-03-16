@@ -109,10 +109,23 @@ print("Loading shows and keywords into database...")
 
 # load shows and keywords into table
 for show_and_keywords in list_of_shows_and_keywords:
-    show_keyword_data = pd.DataFrame([{"show_and_keywords": show_and_keywords}])
+    show_id = show_and_keywords["show_id"]
 
-    show_keyword_data['show_and_keywords'] = list(map(lambda x: json.dumps(x),
-                                               show_keyword_data['show_and_keywords']))
+    show_name = db.execute_sql('''
+            select distinct show_name
+            from warehouse.podcast_metadata 
+            where show_id = '{REPLACEME_ID}';
+            '''.format(REPLACEME_ID=show_id), return_list=True)
+    show_name = show_name[0]
+
+    keywords = show_and_keywords["keywords"]
+
+    show_keyword_data = pd.DataFrame([{"show_id":show_id,
+                                       "show_name":show_name,
+                                       "keywords": keywords}])
+
+    show_keyword_data['keywords'] = list(map(lambda x: json.dumps(x),
+                                               show_keyword_data['keywords']))
 
     show_keyword_data.to_sql('sample_shows_and_keywords', index=False,
                       schema='datalake', con=db.engine, if_exists="append")
