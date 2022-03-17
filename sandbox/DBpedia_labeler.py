@@ -1,12 +1,22 @@
 import spacy_dbpedia_spotlight
 from SPARQLWrapper import SPARQLWrapper, JSON
-import json
 import re
-from db_core.database import Database
 from collections import defaultdict
 
 
-def annotator(keywords: 'list', confidence=0.5, verbose=False, split_camel_case=False):
+def annotator(keywords: 'list', confidence: object = 0.5, verbose=False, split_camel_case=False):
+    """
+    Returns list of WikiCat Topics from DBPedia for a given list of keywords.
+
+        Parameters:
+            keywords (list): A list of keywords
+            confidence (float): a float between 0 and 1 to define the confidence threshold for annotation (default 0.5)
+            verbose (bool): prints values of intermediate steps for debugging purposes (default False)
+            split_camel_case (bool): Splits WikiCat's into individual words based on CamelCasing if True (default False)
+
+        Returns:
+            results (list): A list of WikiCats (split into individual words if split_camel_case=True)
+    """
     # create nlp pipe
     nlp = spacy_dbpedia_spotlight.create('en')
     nlp.get_pipe('dbpedia_spotlight').overwrite_ents = False
@@ -45,7 +55,7 @@ def annotator(keywords: 'list', confidence=0.5, verbose=False, split_camel_case=
             for j in subjects['results']['bindings']:
                         word = j['subject']['value'][37:].replace(',', '')
                         camel_case = re.finditer('.+?(?:(?<=[a-z])(?=[A-Z])|(?<=[A-Z,])(?=[A-Z][a-z])|$)', j['subject']['value'][37:])
-                        camel_list = [c.group(0) for c in camel_case]
+                        camel_list = [c.group(0).lower() for c in camel_case]
                         for l in camel_list:
                             results.append(l)
 
@@ -61,6 +71,9 @@ def annotator(keywords: 'list', confidence=0.5, verbose=False, split_camel_case=
 
 
 if __name__ == '__main__':
+    import json
+    from db_core.database import Database
+
     db = Database()
     test_dict = defaultdict(list)
 
@@ -79,8 +92,8 @@ if __name__ == '__main__':
 
         keyword_list = db.execute_sql(query, return_list=True)  # calls keyword lists for episode
 
-        keywords = json.loads(keyword_list[0])['keywords']  # loads list of keywords
+        keywords_list = json.loads(keyword_list[0])['keywords']  # loads list of keywords
 
-        test_dict[episode] = annotator(keywords, confidence=0.5, verbose=False, split_camel_case=True)  # annotates keyword list, generates yago types, and adds to dict
+        test_dict[episode] = annotator(keywords_list, confidence=0.5, verbose=False, split_camel_case=True)  # annotates keyword list, generates yago types, and adds to dict
 
     print(dict(test_dict))
