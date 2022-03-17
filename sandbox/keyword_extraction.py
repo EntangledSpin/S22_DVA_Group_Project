@@ -11,6 +11,7 @@ import custom_stopwords
 import itertools
 from collections import Counter
 import math
+from sandbox.DBpedia_labeler import annotator
 
 db = Database()
 
@@ -20,7 +21,7 @@ max_ngram_size = 2
 deduplication_threshold = 0.7
 deduplication_function = 'seqm'
 windows_size = 3
-num_of_keywords = 10
+num_of_keywords = 5
 features = None
 
 # add new stop words in LOWERCASE only
@@ -28,7 +29,8 @@ features = None
 podcast_custom_stop_words = ["actually", "only", "guys", "hold", "saying",
                              "fucking", "went", "guy", "cuz", "still",
                              "told", "sure", "cool", "yep", "put", "mary. hkh",
-                             "need"]
+                             "need", "people", "podcast", "podcasts",
+                             "blah", "blah blah", "y'all", "stuff"]
 
 stop_words = custom_stopwords.stopwords_starter_list + podcast_custom_stop_words
 
@@ -41,7 +43,7 @@ shows = db.execute_sql('''
 ''', return_list=True)
 
 # run a sample of the shows
-shows = shows[:10]
+shows = shows[:3]
 list_of_shows_and_keywords = []
 count = 1
 
@@ -96,20 +98,32 @@ for show in shows:
 
     # flatten and get most common keywords among all episodes in a show
     flattened = list(itertools.chain(*seqm_keyword_lists))
-    counter_of_flat_list = Counter(flattened)
-    show_most_common_words = counter_of_flat_list.most_common()
 
-    # only keep the top 20% most common keywords for each show
-    len_most_common_words = len(show_most_common_words)
-    twenty_percent_keys = math.floor(len_most_common_words * 0.2)
+    flattened_count = Counter(flattened)
+    flattened_count_10 = flattened_count.most_common(10)
 
-    final_lst = []
-    for k in range(twenty_percent_keys):
-        final_lst.append(show_most_common_words[k][0])
+    # it looks like the annotator takes a long time
+    # even with just 10 keywords for specific runs
+    # do we even need this???
+
+    feed_annotator_10 = []
+    for i in range(10):
+        feed_annotator_10.append(flattened_count_10[i][0])
+
+    print("at annotator")
+    print(feed_annotator_10)
+    wiki_list = annotator(feed_annotator_10, confidence=0.5, verbose=False, split_camel_case=True)
+    print("done with annotator")
+    keywords_topics_comb = feed_annotator_10 + wiki_list
+    keywords_topics_comb = [word for word in keywords_topics_comb if word not in stop_words]
+    keywords_topics_comb_count = Counter(keywords_topics_comb)
+
+    keywords_topics_comb_count = dict(keywords_topics_comb_count)
 
     # put each show and its keywords into a dictionary
     show_keyword_dict["show_id"] = show
-    show_keyword_dict["keywords"] = final_lst
+    show_keyword_dict["keywords"] = keywords_topics_comb
+    show_keyword_dict["keywords_counts"] = keywords_topics_comb_count
 
     list_of_shows_and_keywords.append(show_keyword_dict)
 
@@ -131,13 +145,18 @@ for show_and_keywords in list_of_shows_and_keywords:
     show_name = show_name[0]
 
     keywords = show_and_keywords["keywords"]
+    keywords_counts = show_and_keywords["keywords_counts"]
 
     show_keyword_data = pd.DataFrame([{"show_id":show_id,
                                        "show_name":show_name,
-                                       "keywords": keywords}])
+                                       "keywords": keywords,
+                                       "keywords_counts":keywords_counts}])
 
     show_keyword_data['keywords'] = list(map(lambda x: json.dumps(x),
                                                show_keyword_data['keywords']))
+
+    show_keyword_data['keywords_counts'] = list(map(lambda x: json.dumps(x),
+                                               show_keyword_data['keywords_counts']))
 
     # load data to datalake table
     show_keyword_data.to_sql('sample_shows_and_keywords', index=False,
