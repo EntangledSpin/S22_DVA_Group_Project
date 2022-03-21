@@ -37,7 +37,6 @@ for key in li2:
         li.remove(value)
         break
 
-
 #build dataframe and split columns
 df2=pd.DataFrame(di.items(), columns=['pairs', 'similarity'])
 df2['show_id_1'], df2['show_id_2'] = df2.pairs.str
