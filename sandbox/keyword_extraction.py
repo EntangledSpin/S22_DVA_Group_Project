@@ -13,6 +13,7 @@ from collections import Counter
 import math
 from sandbox.DBpedia_labeler import annotator
 import time
+from concurrent.futures import ThreadPoolExecutor
 
 db = Database()
 
@@ -45,17 +46,10 @@ shows = db.execute_sql('''
 ''', return_list=True)
 
 # run a sample of the shows
-shows = shows[:100]
-list_of_shows_and_keywords = []
-count = 1
+shows = shows[:50]
 
-print("")
-print("Extracting keywords for all the shows...")
-print("")
-
-# loop through all the shows
-for show in shows:
-    print("show", count, "-", show)
+def keyword_extraction(show):
+    print("show:", show)
 
     seqm_keyword_lists = []
     show_keyword_dict = dict()
@@ -110,39 +104,17 @@ for show in shows:
     show_keyword_dict["show_id"] = show
     show_keyword_dict["keywords_counts"] = show_keywords
 
-    list_of_shows_and_keywords.append(show_keyword_dict)
+    show_id = show_keyword_dict["show_id"]
 
-    count += 1
-
-print("")
-print("Loading shows and keywords into database...")
-
-# load show ids, show names, and keywords into table
-for show_and_keywords in list_of_shows_and_keywords:
-    show_id = show_and_keywords["show_id"]
-
-    # get show name
-    show_name = db.execute_sql('''
-            select distinct show_name
-            from warehouse.podcast_metadata 
-            where show_id = '{REPLACEME_ID}';
-            '''.format(REPLACEME_ID=show_id), return_list=True)
-    show_name = show_name[0]
-
-    keywords_counts = show_and_keywords["keywords_counts"]
+    keywords_counts = show_keyword_dict["keywords_counts"]
 
     show_keyword_data = pd.DataFrame([{"show_id":show_id,
-                                       "show_name":show_name,
                                        "keywords_counts":keywords_counts}])
 
     show_keyword_data['keywords_counts'] = list(map(lambda x: json.dumps(x),
                                                show_keyword_data['keywords_counts']))
-
-    # load data to datalake table
-    show_keyword_data.to_sql('sample_shows_and_keywords', index=False,
+    show_keyword_data.to_sql('dummy2', index=False,
                       schema='datalake', con=db.engine, if_exists="append")
 
-print("")
-print("Complete!")
-
-
+for show in shows:
+    keyword_extraction(show)
