@@ -7,8 +7,9 @@ import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 path = os.path.abspath(".")
 db = Database()
-directory = os.path.join(path,'podcasts-transcripts')
+directory = os.path.join(path, 'podcasts-transcripts')
 THREADED = False
+sql_folder = os.path.join(path,"sql")
 
 
 def get_file_count():
@@ -57,13 +58,23 @@ def import_word_tokens(transcript_path):
 
     words_df['episode_uri_id'] = episode_id  # Add episode ID for each word
     words_df['show_uri_id'] = show_id  # Add show ID for each word
-
+    print(words_df)
     # Insert using SQLAlchemy DB engine and Pandas 'to_sql'
-    words_df.to_sql('raw_podcast_word_tokens', index=False,
-                    schema='datalake', con=db.engine, if_exists="append")
+    # words_df.to_sql('raw_podcast_word_tokens', index=False,
+    #                 schema='datalake', con=db.engine, if_exists="append")
+
+def get_uploaded_eps():
+    uploaded_eps_sql = os.path.join(sql_folder, 'get_uploaded_eps.sql')
+    return db.execute_sql(sql_path=uploaded_eps_sql,return_list=True)
+
+
+def check_uploaded_eps(episode,uploaded_eps):
+
+    return episode in uploaded_eps
 
 
 def import_transcripts(transcript_path):
+    uploaded_episodes = get_uploaded_eps()
 
     episode_id, show_id = get_ids(transcript_path)  # Extract ID's from filename
 
@@ -75,8 +86,11 @@ def import_transcripts(transcript_path):
     transcript_df['show_uri_id'] = show_id  # Add show ID for each word
 
     # Insert using SQLAlchemy DB engine and Pandas 'to_sql'
-    transcript_df.to_sql('raw_podcast_transcripts', index=False,
-                    schema='datalake', con=db.engine, if_exists="append")
+
+    if not check_uploaded_eps(episode_id,uploaded_episodes):
+        print(transcript_df)
+        transcript_df.to_sql('raw_podcast_transcripts', index=False,
+                        schema='datalake', con=db.engine, if_exists="append")
 
 
 def get_ids(transcript_path):
