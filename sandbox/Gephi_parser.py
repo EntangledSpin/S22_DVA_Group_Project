@@ -1,12 +1,41 @@
 from bs4 import BeautifulSoup
+from db_core.database import Database
 
-with open('graph_test_output.gexf', 'r') as f:
-    data = f.read()
 
-bs_data = BeautifulSoup(data,'xml')
-nodes = bs_data.find_all('node')
-coords = bs_data.find('node', {'id':'2TPvj8tyUhY2UHOzU9kyu4'}).find('viz:position')
-x = coords.get('x')
-y = coords.get('y')
+class Gephi:
+    def __init__(self, data):
+        self.data = BeautifulSoup(data, 'xml')
 
-print(x,',', y)
+    def parse(self, show_id):
+        coords = self.data.find('node', {'id': show_id}).find('viz:position')
+        x = coords.get('x')
+        y = coords.get('y')
+        return x, y
+
+    def plot(self, shows:list):
+        coord_dict = {'show_id': [], 'x': [], 'y': []}
+        for show in shows:
+            coord_dict['show_id'].append(str(show))
+            xy = self.parse(show)
+            coord_dict['x'].append(float(xy[0]))
+            coord_dict['y'].append(float(xy[1]))
+        return pd.DataFrame.from_dict(coord_dict)
+
+
+if __name__ == '__main__':
+    import pandas as pd
+    db = Database()
+
+    shows_list = db.execute_sql('''
+                SELECT show_id_1 FROM datalake.similarity_matrix
+                ''', return_list=True)
+    shows_list = list(set(shows_list + (db.execute_sql(''' SELECT show_id_2 FROM datalake.similarity_matrix''', return_list=True))))
+
+    with open('graph_test_output.gexf', 'r') as f:
+        graph_data = f.read()
+
+    gp = Gephi(graph_data)
+    show_table = gp.plot(shows_list)
+    show_table.to_sql('tableau_coordinates', index=False, schema='datalake', con=db.engine, if_exists='replace')
+
+
