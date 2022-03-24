@@ -1,0 +1,1 @@
+select distinct episode_uri_id from datalake.raw_podcast_transcripts

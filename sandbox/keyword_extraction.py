@@ -28,28 +28,21 @@ features = None
 
 # add new stop words in LOWERCASE only
 # stopwords only seem to be removed if in lowercase
-podcast_custom_stop_words = ["actually", "only", "guys", "hold", "saying",
-                             "fucking", "went", "guy", "cuz", "still",
-                             "told", "sure", "cool", "yep", "put", "mary. hkh",
-                             "need", "people", "podcast", "podcasts",
-                             "blah", "blah blah", "y'all", "stuff",
-                             "hello", "welcome", "thought", "hopefully"]
+podcast_custom_stop_words = []
 
 stop_words = custom_stopwords.stopwords_starter_list + podcast_custom_stop_words
 
 # pulls in unique show ids having at least 10 episodes
+# but fewer than 100
 shows = db.execute_sql('''
-    select distinct show_uri_id
-    from datalake.raw_podcast_transcripts
-    group by show_uri_id
-    having count(*) >= 10;
-''', return_list=True)
+    select show_uri_id
+    from datalake.sorted_shows;
+    ''', return_list=True)
 
-# run a sample of the shows
-shows = shows[:50]
+#show_keyword_data = pd.DataFrame([{"show_id": show_id,
+#                                   "keywords_counts": keywords_counts}])
 
 def keyword_extraction(show):
-    print("show:", show)
 
     seqm_keyword_lists = []
     show_keyword_dict = dict()
@@ -64,9 +57,9 @@ def keyword_extraction(show):
                                                 stopwords=stop_words,
                                                 windowsSize=windows_size,)
 
-    # grab all the episodes for the current show
+    # grab all the transcripts for the current show
     episodes = db.execute_sql('''
-            select episode_uri_id
+            select lower(transcript)
             from datalake.raw_podcast_transcripts
             WHERE show_uri_id = '{REPLACEME_ID}';
         '''.format(REPLACEME_ID=show), return_list=True)
@@ -75,15 +68,8 @@ def keyword_extraction(show):
     for id in episodes:
         keyword_list = []
 
-        # get the transcript for the current episode
-        text = db.execute_sql('''
-        select lower(transcript)
-        from datalake.raw_podcast_transcripts 
-        where episode_uri_id = '{REPLACEME_ID}';
-        '''.format(REPLACEME_ID=id), return_list=True)[0]
-
         # get the keywords for the episode
-        keywords = custom_kw_extractor.extract_keywords(text)
+        keywords = custom_kw_extractor.extract_keywords(id)
 
         # put all the keywords into a list
         for keyword in keywords:
@@ -113,8 +99,24 @@ def keyword_extraction(show):
 
     show_keyword_data['keywords_counts'] = list(map(lambda x: json.dumps(x),
                                                show_keyword_data['keywords_counts']))
-    show_keyword_data.to_sql('dummy2', index=False,
+    show_keyword_data.to_sql('sample_shows_and_keywords', index=False,
                       schema='datalake', con=db.engine, if_exists="append")
 
+global_start_time = time.time()
+
+shows = shows[200:300]
+
+count = 0
 for show in shows:
+    print("show:", count)
     keyword_extraction(show)
+
+    if count % 10 == 0:
+        print("reconnecting...")
+        db.reconnect()
+
+    count += 1
+
+global_end_time = time.time()
+
+print("\nElapsed time:", round((global_end_time - global_start_time) / 60, 2), "minutes")
