@@ -39,8 +39,7 @@ shows = db.execute_sql('''
     from datalake.sorted_shows;
     ''', return_list=True)
 
-#show_keyword_data = pd.DataFrame([{"show_id": show_id,
-#                                   "keywords_counts": keywords_counts}])
+append_to_df = []
 
 def keyword_extraction(show):
 
@@ -85,37 +84,35 @@ def keyword_extraction(show):
     flattened_count = Counter(flattened)
     flattened_count_all = flattened_count.most_common()
     show_keywords = dict(flattened_count_all)
+    show_keywords = json.dumps(show_keywords)
 
     # put each show and its keywords into a dictionary
-    show_keyword_dict["show_id"] = show
-    show_keyword_dict["keywords_counts"] = show_keywords
+    #show_keyword_dict["show_id"] = show
+    #show_keyword_dict["keywords_counts"] = show_keywords
 
-    show_id = show_keyword_dict["show_id"]
+    #show_id = show_keyword_dict["show_id"]
 
-    keywords_counts = show_keyword_dict["keywords_counts"]
+    #keywords_counts = show_keyword_dict["keywords_counts"]
 
-    show_keyword_data = pd.DataFrame([{"show_id":show_id,
-                                       "keywords_counts":keywords_counts}])
+    #show_keywords = list(map(lambda x: json.dumps(x), show_keywords))
 
-    show_keyword_data['keywords_counts'] = list(map(lambda x: json.dumps(x),
-                                               show_keyword_data['keywords_counts']))
-    show_keyword_data.to_sql('sample_shows_and_keywords', index=False,
-                      schema='datalake', con=db.engine, if_exists="append")
+    append_to_df.append([show, show_keywords])
 
 global_start_time = time.time()
 
-shows = shows[200:300]
+shows = shows[0:250]
 
 count = 0
 for show in shows:
     print("show:", count)
     keyword_extraction(show)
 
-    if count % 10 == 0:
-        print("reconnecting...")
-        db.reconnect()
-
     count += 1
+
+df = pd.DataFrame(append_to_df, columns=['show_id', 'keyword_counts'])
+
+df.to_sql('lala', index=False,
+                  schema='datalake', con=db.engine, if_exists="append")
 
 global_end_time = time.time()
 
