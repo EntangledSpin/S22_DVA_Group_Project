@@ -18,19 +18,18 @@ word_list = kef.wordnet()
 # the extremely large shows show our algorithm down massively. There are only a few dozen extremely large shows
 shows = kef.import_shows(db)
 
-# for testing, process 10 shows
-shows = shows[:10]
+shows = shows[:500]
 
 # the shows and keywords lists will be appended to this list, and then loaded into the db
 append_to_df = []
 
 # perform the keyword extraction process on the shows
-count, append_to_df, need_to_reprocess = kef.batch_keyword_extraction(shows, append_to_df, word_list)
+count, append_to_df, need_to_reprocess = kef.batch_keyword_extraction(shows, append_to_df, word_list, db)
 
 # if there is a time-out issue, we will re-process these shows
 # sometimes when processing hundreds of shows a handful will time-out
 if len(need_to_reprocess) > 0:
-    reprocessed_count, append_to_df, need_to_reprocess = kef.reprocess_shows(need_to_reprocess, append_to_df, word_list)
+    reprocessed_count, append_to_df, need_to_reprocess = kef.reprocess_shows(need_to_reprocess, append_to_df, word_list, db)
 else:
     reprocessed_count = 0
 
