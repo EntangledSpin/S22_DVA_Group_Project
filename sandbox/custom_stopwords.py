@@ -12,4 +12,5 @@ stopwords_starter_list = ['a', 'abaft', 'abafter', 'abaftest', 'about', 'abouter
                              "sit", "big", "tell", "take", "literally",
                              "show", "shows", "cock", "sort", "day", "days",
                              "little", "definitely", "anyway", "easiest", "heart",
-                             "next", "nxt", "obviously", "first", "now", "nice", "yeah."]
+                             "next", "nxt", "obviously", "first", "now", "nice", "yeah.",
+                          "look", "whole", "fsh", "understand", "basically", "talk", "talks", "ask", "asks"]
