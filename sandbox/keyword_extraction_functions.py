@@ -120,13 +120,13 @@ def keyword_extraction(show, final_lst, db, word_list):
 #      arguments: show_list - a list of show ids
 #                 append_to_df - the list of show, keyword list pairings
 #                 word_list - the corpus of wordnet english words
+#                 db - a database connection
 #
 #      returns: count - the count of successful show keyword extractions
 #               append_to_df - the list of show, keyword list pairings
 #               need_to_reprocess - a list of shows that need to be reprocessed because of an exception
 #
-def batch_keyword_extraction(show_list, append_to_df, word_list):
-    db = Database()
+def batch_keyword_extraction(show_list, append_to_df, word_list, db):
     need_to_reprocess = []
     count = 0
     for show in show_list:
@@ -146,15 +146,16 @@ def batch_keyword_extraction(show_list, append_to_df, word_list):
 #      arguments: show_list - a list of show ids
 #                 append_to_df - the list of show, keyword list pairings
 #                 word_list - the corpus of wordnet english words
+#                 db - a database connection
 #
 #      returns: count - the count of successful show keyword extractions
 #               append_to_df - the list of show, keyword list pairings
 #               need_to_reprocess - a list of shows that need to be reprocessed because of an exception
 #
-def reprocess_shows(show_list, append_to_df, word_list):
+def reprocess_shows(show_list, append_to_df, word_list, db):
     print("Number of shows to reprocess:", len(show_list))
 
-    reprocessed_count, append_to_df, need_to_reprocess = batch_keyword_extraction(show_list, append_to_df, word_list)
+    reprocessed_count, append_to_df, need_to_reprocess = batch_keyword_extraction(show_list, append_to_df, word_list, db)
     return reprocessed_count, append_to_df, need_to_reprocess
 
 # load_data_to_db
