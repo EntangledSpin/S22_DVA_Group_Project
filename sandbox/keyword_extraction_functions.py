@@ -153,7 +153,8 @@ def batch_keyword_extraction(show_list, append_to_df, word_list, db):
 #               need_to_reprocess - a list of shows that need to be reprocessed because of an exception
 #
 def reprocess_shows(show_list, append_to_df, word_list, db):
-    print("Number of shows to reprocess:", len(show_list))
+    print("\nNumber of shows to reprocess:", len(show_list))
+    print("")
 
     reprocessed_count, append_to_df, need_to_reprocess = batch_keyword_extraction(show_list, append_to_df, word_list, db)
     return reprocessed_count, append_to_df, need_to_reprocess
