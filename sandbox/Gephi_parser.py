@@ -26,12 +26,9 @@ if __name__ == '__main__':
     import pandas as pd
     db = Database()
 
-    shows_list = db.execute_sql('''
-                SELECT show_id_1 FROM datalake.similarity_matrix
-                ''', return_list=True)
-    shows_list = list(set(shows_list + (db.execute_sql(''' SELECT show_id_2 FROM datalake.similarity_matrix''', return_list=True))))
+    shows_list = db.execute_sql(sql_path='sql/nodes_export.sql', return_list=True)
 
-    with open('graph_test_output.gexf', 'r') as f:
+    with open('coordinates_500.gexf', 'r') as f:
         graph_data = f.read()
 
     gp = Gephi(graph_data)
