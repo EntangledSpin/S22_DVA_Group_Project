@@ -3,7 +3,7 @@ from db_core.database import Database
 import pandas as pd
 
 
-def coordinates(table: str, similarity=0.0, layout='random'):
+def coordinates(table: str, similarity=0.0, layout='random', schema='datalake'):
 
     """
     Function to write coordinates for graph nodes in similarity matrix.
@@ -45,8 +45,8 @@ def coordinates(table: str, similarity=0.0, layout='random'):
         y.append(pos[show][1])
     data = {'show_id': nodes, 'x': x, 'y': y}
     pos_df = pd.DataFrame(data)
-    pos_df.to_sql(table, index=False, schema='datalake', con=db.engine, if_exists='replace')
+    pos_df.to_sql(table, index=False, schema=schema, con=db.engine, if_exists='replace')
 
 
 if __name__ == '__main__':
-    coordinates('tableau_coordinates_netx', 0.2, 'circular')
+    coordinates('tableau_coordinates_netx', 0.2, 'spring')
