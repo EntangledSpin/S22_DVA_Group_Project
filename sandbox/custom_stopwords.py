@@ -22,4 +22,6 @@ stopwords_starter_list = ['a', 'abaft', 'abafter', 'abaftest', 'about', 'abouter
                           "coming", "called", "uh-huh", "uh", "huh", "uh huh", "ahead", "listen",
                           "listens", "listening", "hard", "ace", "set", "thank", "thanks", "fine",
                           "certain", "certainly", "rog.", "abg", "spotify", "quick", "quicker", "quickly",
-                          "excited", "excite", "excites", "word", "words", "once", "hmm", "especially"]
+                          "excited", "excite", "excites", "word", "words", "once", "hmm", "especially",
+                          "truly", "came", "bring", "find", "seen", "exactly",
+                          "ultimately", "wanted", "absolutely"]
