@@ -11,6 +11,7 @@ def coordinates(table: str, similarity=0.0, layout='random', schema='datalake'):
     :param table: name of table to write coordinates to.
     :param similarity: degree of similarity required to make a node pair an edge.
     :param layout: NetworkX layout for graph. Option are 'spiral', 'spring', 'circular', 'random'. Any other value uses random layout.
+    :param schema: Schema to write table to.
 
     :return: None (writes table to Database).
     """
