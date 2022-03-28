@@ -72,28 +72,25 @@ def annotator(keywords: 'list', confidence: object = 0.5, verbose=False, split_c
 
 if __name__ == '__main__':
     import json
+    import ast
     from db_core.database import Database
 
     db = Database()
     test_dict = defaultdict(list)
 
-    experiment = 'cdecfed9-6fc8-4d97-ba0f-b53f58e19df2'  # enter experiment ID from keyword_extraction_results
+    show_list = db.execute_sql('''
+           select show_id from datalake.sample_shows_and_keywords;
+    ''', return_list=True)  # returns list of episodes with selected experiment id
 
-    episode_list = db.execute_sql('''
-           select distinct episode_uri_id from datalake.keyword_extraction_results
-            where expirement_uuid = '{fexperiment}'
-             limit 10;
-    '''.format(fexperiment = experiment), return_list=True)  # returns list of episodes with selected experiment id
-
-    for episode in episode_list:
-        query = '''SELECT results FROM datalake.keyword_extraction_results
-                    WHERE expirement_uuid = '{fexperiment}' AND episode_uri_id = '{fepisode}' 
-                    '''.format(fexperiment = experiment, fepisode = episode)
+    for show in show_list:
+        query = '''SELECT keyword_counts FROM datalake.sample_shows_and_keywords
+                    WHERE  show_id = '{fshow}' 
+                    '''.format(fshow=show)
 
         keyword_list = db.execute_sql(query, return_list=True)  # calls keyword lists for episode
 
-        keywords_list = json.loads(keyword_list[0])['keywords']  # loads list of keywords
+        keywords_list = list(ast.literal_eval(keyword_list[0]).keys())  # loads list of keywords
 
-        test_dict[episode] = annotator(keywords_list, confidence=0.5, verbose=False, split_camel_case=True)  # annotates keyword list, generates yago types, and adds to dict
+        test_dict[show] = annotator(keywords_list, confidence=0.5, verbose=False, split_camel_case=True)  # annotates keyword list, generates yago types, and adds to dict
 
     print(dict(test_dict))
