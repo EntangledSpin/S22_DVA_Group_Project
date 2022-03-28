@@ -90,10 +90,24 @@ def keyword_extraction(show, final_lst, db, word_list):
 
         # put all the keywords into a list
         for keyword in keywords:
-            keyword_list.append(keyword[0])
+            just_keyword = keyword[0]
+
+            # remove keywords that are just the same word repeated (ex: "harry harry")
+            just_keyword = just_keyword.split()
+            if len(just_keyword) == 1:
+                keyword_list.append(keyword[0])
+            else:
+                if len(set(just_keyword)) > 1:
+                    keyword_list.append(keyword[0])
+
+        # if a keyword is a subset of another keyword, remove it
+        keyword_list2 = []
+        for kw in keyword_list:
+            if not any([kw in r for r in keyword_list if kw != r]):
+                keyword_list2.append(kw)
 
         # add the episode's keywords to a list pertaining to the show
-        seqm_keyword_lists.append(keyword_list)
+        seqm_keyword_lists.append(keyword_list2)
 
     # flatten and get most common keywords among all episodes in a show
     flattened = list(itertools.chain(*seqm_keyword_lists))
