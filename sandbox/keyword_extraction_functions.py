@@ -16,6 +16,7 @@ from collections import Counter
 import math
 import time
 from nltk.corpus import wordnet as wn
+from names_dataset import NameDataset
 
 # set yake parameters
 language = "en"
@@ -26,6 +27,35 @@ windows_size = 3
 num_of_keywords = 5
 features = None
 stop_words = custom_stopwords.stopwords_starter_list
+
+
+# first_names - NOT CURRENTLY IN USE
+#      arguments: None
+#      returns:   all_names_final - a list of english first names
+#
+def first_names():
+    nd = NameDataset()
+
+    male_names = nd.get_top_names(n=1000000, gender="Male", country_alpha2='US')
+    female_names = nd.get_top_names(n=1000000, gender="Female", country_alpha2='US')
+
+    male_names = male_names["US"]["M"]
+    female_names = female_names["US"]["F"]
+
+    all_names = male_names + female_names
+    all_names = set(all_names)
+    all_names = list(all_names)
+    all_names = [name.lower() for name in all_names]
+    all_names.sort()
+
+    letter_lst = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+                  "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
+                  "w", "x", "y", "z"]
+
+    all_names_final = [name for name in all_names if name[0] in letter_lst]
+
+    return all_names_final
+
 
 # wordnet
 #      arguments: None
@@ -106,6 +136,8 @@ def keyword_extraction(show, final_lst, db, word_list):
             if not any([kw in r for r in keyword_list if kw != r]):
                 keyword_list2.append(kw)
 
+        #print(keyword_list2)
+
         # add the episode's keywords to a list pertaining to the show
         seqm_keyword_lists.append(keyword_list2)
 
@@ -117,6 +149,8 @@ def keyword_extraction(show, final_lst, db, word_list):
 
     # do another pass at stop word removal
     flattened = [word for word in flattened if word not in stop_words]
+
+    print(flattened)
 
     # flatten the lists and count the number of occurences of each keyword
     flattened_count = Counter(flattened)
