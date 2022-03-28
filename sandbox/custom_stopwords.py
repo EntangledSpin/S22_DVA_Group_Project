@@ -13,4 +13,13 @@ stopwords_starter_list = ['a', 'abaft', 'abafter', 'abaftest', 'about', 'abouter
                              "show", "shows", "cock", "sort", "day", "days",
                              "little", "definitely", "anyway", "easiest", "heart",
                              "next", "nxt", "obviously", "first", "now", "nice", "yeah.",
-                          "look", "whole", "fsh", "understand", "basically", "talk", "talks", "ask", "asks"]
+                          "look", "whole", "fsh", "understand", "basically", "talk", "talks", "ask", "asks",
+                          "simply", "mind", "ask", "asked", "guess", "interesting", "fascinating",
+                          "felt", "wear", "asking", "think", "thinking", "true", "false", "shit",
+                          "shitty", "important", "begin", "feeling",
+                          "made", "totally", "yes.", "try", "good", "bad", "stay tuned", "amazing", "incredible",
+                          "hard", "dick", "wait", "long", "short", "able", "happen", "happens",
+                          "coming", "called", "uh-huh", "uh", "huh", "uh huh", "ahead", "listen",
+                          "listens", "listening", "hard", "ace", "set", "thank", "thanks", "fine",
+                          "certain", "certainly", "rog.", "abg", "spotify", "quick", "quicker", "quickly",
+                          "excited", "excite", "excites", "word", "words", "once", "hmm", "especially"]
