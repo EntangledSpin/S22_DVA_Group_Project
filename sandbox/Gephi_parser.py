@@ -12,7 +12,7 @@ class Gephi:
         y = coords.get('y')
         return x, y
 
-    def plot(self, shows:list):
+    def plot(self, shows: list):
         coord_dict = {'show_id': [], 'x': [], 'y': []}
         for show in shows:
             coord_dict['show_id'].append(str(show))
@@ -34,5 +34,3 @@ if __name__ == '__main__':
     gp = Gephi(graph_data)
     show_table = gp.plot(shows_list)
     show_table.to_sql('tableau_coordinates', index=False, schema='datalake', con=db.engine, if_exists='replace')
-
-
