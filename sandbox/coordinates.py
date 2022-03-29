@@ -10,7 +10,7 @@ def coordinates(table: str, similarity=0.0, layout='random', schema='datalake'):
 
     :param table: name of table to write coordinates to.
     :param similarity: degree of similarity required to make a node pair an edge.
-    :param layout: NetworkX layout for graph. Option are 'spiral', 'spring', 'circular', 'random'. Any other value uses random layout.
+    :param layout: NetworkX layout for graph. Option are 'kamada', 'spiral', 'spring', 'spectral', 'circular', 'random'. Any other value uses random layout.
     :param schema: Schema to write table to.
 
     :return: None (writes table to Database).
@@ -19,25 +19,27 @@ def coordinates(table: str, similarity=0.0, layout='random', schema='datalake'):
     db = Database()
 
     edges_dict = db.execute_sql(sql = '''
-                                    SELECT show_id_1, show_id_2 
+                                    SELECT show_id_1 as source, show_id_2 as target, similarity as weight
                                     FROM datalake.similarity_matrix 
                                     WHERE similarity > {sim}'''.format(sim=similarity), return_dict=True)
-    edges = []
-    for edge in edges_dict:
-        edges.append((edge['show_id_1'], edge['show_id_2']))
+    edges = pd.DataFrame(edges_dict)
 
-    G = nx.from_edgelist(edges)
+    G = nx.from_pandas_edgelist(edges, edge_attr=True)
 
     if layout == 'spiral':
-        pos = nx.spiral_layout(G, )
+        pos = nx.spiral_layout(G)
     elif layout == 'spring':
-        pos = nx.spring_layout(G)
+        pos = nx.spring_layout(G, weight='weight')
     elif layout == 'circular':
         pos = nx.circular_layout(G)
+    elif layout == 'spectral':
+        pos = nx.spectral_layout(G, weight='weight')
+    elif layout == 'kamada':
+        pos = nx.kamada_kawai_layout(G, weight='weight')
     else:
         pos = nx.random_layout(G)
 
-    nodes =[]
+    nodes = []
     x = []
     y = []
     for show in pos.keys():
@@ -50,4 +52,4 @@ def coordinates(table: str, similarity=0.0, layout='random', schema='datalake'):
 
 
 if __name__ == '__main__':
-    coordinates('tableau_coordinates_netx', 0.2, 'spring')
+    coordinates('tableau_coordinates_netx', 0.5, 'kamada')
