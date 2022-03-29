@@ -18,7 +18,7 @@ word_list = kef.wordnet()
 # the extremely large shows show our algorithm down massively. There are only a few dozen extremely large shows
 shows = kef.import_shows(db)
 
-shows = shows[0:10]
+shows = shows[0:5]
 
 # the shows and keywords lists will be appended to this list, and then loaded into the db
 append_to_df = []
@@ -34,7 +34,7 @@ else:
     reprocessed_count = 0
 
 # once all shows are processed, load them to the db to be used in the similarity matrix process
-#kef.load_data_to_db(append_to_df, db)
+kef.load_data_to_db(append_to_df, db)
 
 global_end_time = time.time()
 
