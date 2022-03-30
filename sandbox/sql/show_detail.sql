@@ -1,3 +1,5 @@
+drop table if exists datalake.show_info;
+
 create table datalake.show_info as
 select
 show_id,
