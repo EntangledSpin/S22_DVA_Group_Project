@@ -13,7 +13,7 @@ b.show_name,
 b.show_description,
 b.publisher,
 CONCAT('https://open.spotify.com/show/', b.show_id) AS URL,
-sum(b.duration) as total_episode_length,
+avg(b.duration) as average_episode_length,
 count(b.episode_id) as number_of_episodes
 from datalake.show_id_info as a
 left join  warehouse.podcast_metadata as b on a.show_id=b.show_id
