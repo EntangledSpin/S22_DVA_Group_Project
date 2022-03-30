@@ -1,4 +1,5 @@
 import networkx as nx
+from networkx.algorithms import community
 from db_core.database import Database
 import pandas as pd
 
@@ -39,17 +40,28 @@ def coordinates(table: str, similarity=0.0, layout='random', schema='datalake'):
     else:
         pos = nx.random_layout(G)
 
+    communities = community.louvain_communities(G)
+
     nodes = []
     x = []
     y = []
+    coms = []
     for show in pos.keys():
         nodes.append(show)
         x.append(pos[show][0])
         y.append(pos[show][1])
-    data = {'show_id': nodes, 'x': x, 'y': y}
+
+        for com in communities:
+            if show in com:
+                coms.append(communities.index(com))
+                break
+
+    data = {'show_id': nodes, 'x': x, 'y': y, 'community': coms}
     pos_df = pd.DataFrame(data)
     pos_df.to_sql(table, index=False, schema=schema, con=db.engine, if_exists='replace')
 
+    return None
+
 
 if __name__ == '__main__':
-    coordinates('tableau_coordinates_netx', 0.5, 'kamada')
+    coordinates('tableau_coordinates', 0.5, 'kamada')
