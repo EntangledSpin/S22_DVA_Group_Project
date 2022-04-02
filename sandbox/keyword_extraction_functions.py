@@ -106,8 +106,6 @@ def keyword_extraction(show, final_lst, db, word_list):
             if not any([kw in r for r in keyword_list if kw != r]):
                 keyword_list2.append(kw)
 
-        #print(keyword_list2)
-
         # add the episode's keywords to a list pertaining to the show
         seqm_keyword_lists.append(keyword_list2)
 
@@ -119,8 +117,6 @@ def keyword_extraction(show, final_lst, db, word_list):
 
     # do another pass at stop word removal
     flattened = [word for word in flattened if word not in stop_words]
-
-    print(flattened)
 
     # flatten the lists and count the number of occurences of each keyword
     flattened_count = Counter(flattened)
@@ -186,7 +182,7 @@ def load_data_to_db(append_to_df, db):
 
     df = pd.DataFrame(append_to_df, columns=['show_id', 'keyword_counts'])
 
-    df.to_sql('dummy', index=False,
+    df.to_sql('dummy5', index=False,
               schema='datalake', con=db.engine, if_exists="append")
 
 
