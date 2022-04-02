@@ -18,7 +18,7 @@ word_list = kef.wordnet()
 # the extremely large shows show our algorithm down massively. There are only a few dozen extremely large shows
 shows = kef.import_shows(db)
 
-shows = shows[0:5]
+shows = shows[:100]
 
 # the shows and keywords lists will be appended to this list, and then loaded into the db
 append_to_df = []
