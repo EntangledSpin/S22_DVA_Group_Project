@@ -21,8 +21,8 @@ def coordinates(table: str, similarity=0.0, layout='random', schema='datalake'):
 
     edges_dict = db.execute_sql(sql = '''
                                     SELECT show_id_1 as source, show_id_2 as target, similarity as weight
-                                    FROM datalake.similarity_matrix 
-                                    WHERE similarity > {sim}'''.format(sim=similarity), return_dict=True)
+                                    FROM warehouse.all_similarity_matrix 
+                                    WHERE similarity >= {sim}'''.format(sim=similarity), return_dict=True)
     edges = pd.DataFrame(edges_dict)
 
     G = nx.from_pandas_edgelist(edges, edge_attr=True)
@@ -64,4 +64,4 @@ def coordinates(table: str, similarity=0.0, layout='random', schema='datalake'):
 
 
 if __name__ == '__main__':
-    coordinates('tableau_coordinates', 0.5, 'kamada')
+    coordinates('tableau_coordinates', 0.75, 'kamada', schema='warehouse')
