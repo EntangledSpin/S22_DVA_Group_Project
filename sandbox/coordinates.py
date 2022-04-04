@@ -64,4 +64,4 @@ def coordinates(table: str, similarity=0.0, layout='random', schema='datalake'):
 
 
 if __name__ == '__main__':
-    coordinates('tableau_coordinates', 0.75, 'kamada', schema='warehouse')
+    coordinates('tableau_coordinates', 0.5, 'kamada', schema='warehouse')
