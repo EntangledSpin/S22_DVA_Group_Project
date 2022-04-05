@@ -1,3 +1,5 @@
+drop table if exists warehouse.tableau_data;
+
 Create table warehouse.tableau_data as
 SELECT source.show_id_1, source.show_id_2, source.similarity, 'source' as Type, xy.x as X,
        xy.Y as Y, meta.show_name as Name, si.show_name, si.show_description, si.publisher, si.average_episode_length, si.number_of_episodes,re.category,re.authors,xy.community,CONCAT('https://open.spotify.com/show/', source.show_id_1) AS URL
