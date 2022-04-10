@@ -1,5 +1,7 @@
 # Keyword Extraction Driver Program
 # see keyword_extraction_functions.py for the functions implemented in this program
+# note: if this process gives you lots of exceptions, it will help to run small batches of shows
+#       instead of running all of them at once
 from db_core.database import Database
 import time
 import keyword_extraction_functions as kef
@@ -13,12 +15,9 @@ db = Database()
 # we will use this list to remove any keywords that appear as gibberish (ex: "dfjskdjdk")
 word_list = kef.wordnet()
 
-# bring in all show ids that have at least 10 episodes, but not more than 100
+# bring in all show ids that have at least 10 episodes
 # we want to remove small outliers because they may not generate representative keyword lists
-# the extremely large shows show our algorithm down massively. There are only a few dozen extremely large shows
 shows = kef.import_shows(db)
-
-shows = shows[:100]
 
 # the shows and keywords lists will be appended to this list, and then loaded into the db
 append_to_df = []
