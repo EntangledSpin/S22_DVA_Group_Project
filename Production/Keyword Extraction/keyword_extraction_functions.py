@@ -38,7 +38,7 @@ def wordnet():
 def import_shows(db):
     shows = db.execute_sql('''
         select show_uri_id
-        from datalake.sorted_shows;
+        from datalake.toy_sorted_shows;
         ''', return_list=True)
 
     return shows
@@ -69,7 +69,7 @@ def keyword_extraction(show, final_lst, db, word_list):
     # grab all the transcripts for the current show
     episodes = db.execute_sql('''
             select lower(transcript)
-            from datalake.raw_podcast_transcripts
+            from datalake.toy_podcast_transcripts
             WHERE show_uri_id = '{REPLACEME_ID}';
         '''.format(REPLACEME_ID=show), return_list=True)
 
@@ -174,7 +174,7 @@ def load_data_to_db(append_to_df, db):
 
     df = pd.DataFrame(append_to_df, columns=['show_id', 'keyword_counts'])
 
-    df.to_sql('dummy5', index=False,
+    df.to_sql('toy_shows_and_keywords', index=False,
               schema='datalake', con=db.engine, if_exists="append")
 
 
