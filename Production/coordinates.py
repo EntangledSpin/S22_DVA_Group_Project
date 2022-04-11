@@ -4,7 +4,7 @@ from db_core.database import Database
 import pandas as pd
 
 
-def coordinates(table: str, similarity=0.0, layout='kamada', schema='datalake'):
+def coordinates(table: str, similarity=0.0, layout='kamada', source='warehouse.all_similarity_matrix', schema='datalake'):
 
     """
     Function to write coordinates for graph nodes in similarity matrix.
@@ -12,6 +12,7 @@ def coordinates(table: str, similarity=0.0, layout='kamada', schema='datalake'):
     :param table: name of table to write coordinates to.
     :param similarity: degree of similarity required to make a node pair an edge.
     :param layout: NetworkX layout for graph. Option are 'kamada', 'spiral', 'spring', 'spectral', 'circular', 'random'. Any other value uses random layout.
+    :param source: source table for similarity matrix.
     :param schema: Schema to write table to.
 
     :return: None (writes table to Database).
@@ -22,8 +23,8 @@ def coordinates(table: str, similarity=0.0, layout='kamada', schema='datalake'):
     # Read edges with similarity >= param similarity into a dictionary
     edges_dict = db.execute_sql(sql = '''
                                     SELECT show_id_1 as source, show_id_2 as target, similarity as weight
-                                    FROM warehouse.all_similarity_matrix 
-                                    WHERE similarity >= {sim}'''.format(sim=similarity), return_dict=True)
+                                    FROM {source}
+                                    WHERE similarity >= {sim}'''.format(sim=similarity, source=source), return_dict=True)
     edges = pd.DataFrame(edges_dict)  # convert dictionary to pandas dataframe
 
     G = nx.from_pandas_edgelist(edges, edge_attr=True)  # initialize a NetworkX Graph Object with the edges dataframe
