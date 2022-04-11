@@ -4,7 +4,7 @@ from db_core.database import Database
 import pandas as pd
 
 
-def coordinates(table: str, similarity=0.0, layout='random', schema='datalake'):
+def coordinates(table: str, similarity=0.0, layout='kamada', schema='datalake'):
 
     """
     Function to write coordinates for graph nodes in similarity matrix.
