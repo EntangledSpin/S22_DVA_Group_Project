@@ -4,10 +4,9 @@
 import yake
 import json
 import pandas as pd
-import custom_stopwords
+import word_lists as wl
 import itertools
 from collections import Counter
-from nltk.corpus import wordnet as wn
 
 # set yake parameters
 language = "en"
@@ -17,19 +16,7 @@ deduplication_function = 'seqm'
 windows_size = 3
 num_of_keywords = 5
 features = None
-stop_words = custom_stopwords.stopwords_starter_list
-
-# wordnet
-#      arguments: None
-#      returns:   word_list - a list of words present in the NLTK Wordnet corpus
-#
-def wordnet():
-    word_list = [word.lower() for word in wn.all_lemma_names()]
-    word_list = set(word_list)
-    word_list = list(word_list)
-    word_list.sort()
-
-    return word_list
+stop_words = wl.stop_words
 
 # import_shows
 #      arguments: db - a database connection
