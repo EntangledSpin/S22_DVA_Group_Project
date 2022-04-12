@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:anchor="https://anchor.fm/xmlns">
+	<channel>
+		<title><![CDATA[ModernEnterprise]]></title>
+		<description><![CDATA[Modern Enterprise Podcast is about the evolution of enterprises in the era of rapidly evolving technologies. In this podcast, we will talk about modern IT stacks, ML/AI, etc.. We will focus on helping end users understand the landscape and to help them figure out the right strategies needed for rapid innovation. Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+		<link>http://stacksense.io</link>
+		<image>
+			<url>https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg</url>
+			<title>ModernEnterprise</title>
+			<link>http://stacksense.io</link>
+		</image>
+		<generator>Anchor Podcasts</generator>
+		<lastBuildDate>Wed, 01 Apr 2020 16:54:08 GMT</lastBuildDate>
+		<atom:link href="https://anchor.fm/s/2cde284/podcast/rss" rel="self" type="application/rss+xml"/>
+		<author><![CDATA[Krishnan Subramanian]]></author>
+		<copyright><![CDATA[Krishnan Subramanian]]></copyright>
+		<language><![CDATA[en]]></language>
+		<atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+		<anchor:support>https://anchor.fm/modernenterprise/support</anchor:support>
+		<anchor:station>2cde284</anchor:station>
+		<itunes:author>Krishnan Subramanian</itunes:author>
+		<itunes:summary>Modern Enterprise Podcast is about the evolution of enterprises in the era of rapidly evolving technologies. In this podcast, we will talk about modern IT stacks, ML/AI, etc.. We will focus on helping end users understand the landscape and to help them figure out the right strategies needed for rapid innovation. Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+		<itunes:type>episodic</itunes:type>
+		<itunes:owner>
+			<itunes:name>Krishnan Subramanian</itunes:name>
+			<itunes:email>podcasts5+2cde284@anchor.fm</itunes:email>
+		</itunes:owner>
+		<itunes:explicit>No</itunes:explicit>
+		<itunes:category text="Technology"/>
+		<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+		<item>
+			<title><![CDATA[Why I hate Kubernetes? Or not with Cloud Opinion]]></title>
+			<description><![CDATA[<p>In this special episode for Kubecon, we talk to Cloud Opinion (@cloud_opinion on Twitter) about Kubernetes, Kubernetes and Kubernetes</p>
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/Why-I-hate-Kubernetes--Or-not-with-Cloud-Opinion-e93sjd</link>
+			<guid isPermaLink="false">81b3c383-6eec-2ffa-3106-d47b27caf63e</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Wed, 20 Nov 2019 22:07:24 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/8564781/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2019-10-20%2F35014160-44100-2-6f20ccf7858f3.mp3" length="23106872" type="audio/mpeg"/>
+			<itunes:summary>&lt;p&gt;In this special episode for Kubecon, we talk to Cloud Opinion (@cloud_opinion on Twitter) about Kubernetes, Kubernetes and Kubernetes&lt;/p&gt;
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>577</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[Kubernetes is mature but Day 2 matters with Jim Bugwadia, Nirmata]]></title>
+			<description><![CDATA[<p>In this podcast I talk with Jim Bugwadia about Kubernetes ecosystem and how Nirmata is helping enterprises manage deployment across multiple clusters and multiple cloud providers. We also discuss Day 2 problems like Governance</p>
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/Kubernetes-is-mature-but-Day-2-matters-with-Jim-Bugwadia--Nirmata-e7tifq</link>
+			<guid isPermaLink="false">bf7a3a96-5c5a-eb3e-fed4-5a0f9a31ec60</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Tue, 22 Oct 2019 15:00:00 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/7309242/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2019-9-22%2F30184372-44100-2-986305ca9b47d.mp3" length="65481664" type="audio/mpeg"/>
+			<itunes:summary>&lt;p&gt;In this podcast I talk with Jim Bugwadia about Kubernetes ecosystem and how Nirmata is helping enterprises manage deployment across multiple clusters and multiple cloud providers. We also discuss Day 2 problems like Governance&lt;/p&gt;
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>1637</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:season>2</itunes:season>
+			<itunes:episode>5</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[Controlling Microservices with Glasnostic - A conversation with Tobias Kunze]]></title>
+			<description><![CDATA[<p>In this episode of Modern Enterprise Podcast, we talk to Tobias Kunze, Founder of Glasnostic, on how their platform helps enterprises manage ocean of Microservices. We also briefly discuss servicemesh and how it differs from Glasnostic</p>
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/Controlling-Microservices-with-Glasnostic---A-conversation-with-Tobias-Kunze-e45vrm</link>
+			<guid isPermaLink="false">6337a4b8-ef94-22f4-c451-b44cb267ec5b</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Tue, 28 May 2019 19:25:47 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/3390774/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2019-4-28%2F16039261-44100-2-c6a8af4357ea7.mp3" length="52769642" type="audio/mpeg"/>
+			<itunes:summary>&lt;p&gt;In this episode of Modern Enterprise Podcast, we talk to Tobias Kunze, Founder of Glasnostic, on how their platform helps enterprises manage ocean of Microservices. We also briefly discuss servicemesh and how it differs from Glasnostic&lt;/p&gt;
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>1319</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:season>2</itunes:season>
+			<itunes:episode>5</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[Chef and Open Source with Corey Scobie]]></title>
+			<description><![CDATA[<p>In this episode of Modern Enterprise Podcast, we talk with Corey Scobie, SVP Products at Chef about application centric approach of Chef and their open source announcement today.</p>
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/Chef-and-Open-Source-with-Corey-Scobie-e3juo7</link>
+			<guid isPermaLink="false">6f58e0e6-3c97-e30a-85c4-c690b561c4b7</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Tue, 02 Apr 2019 16:00:00 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/2799815/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2019-3-1%2F12198093-48000-2-8c99868521044.mp3" length="26659850" type="audio/mpeg"/>
+			<itunes:summary>&lt;p&gt;In this episode of Modern Enterprise Podcast, we talk with Corey Scobie, SVP Products at Chef about application centric approach of Chef and their open source announcement today.&lt;/p&gt;
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>1666</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:season>2</itunes:season>
+			<itunes:episode>4</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[Linkerd and Service Mesh Ecosystem]]></title>
+			<description><![CDATA[<p>In this episode of Modern Enterprise Podcast, we talk with William Morgan, CEO of Buoyant.io about Linkerd and how it compares with istio and others in the Service Mesh ecosystem.&nbsp;</p>
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/Linkerd-and-Service-Mesh-Ecosystem-e3junc</link>
+			<guid isPermaLink="false">f412bc7c-cb7d-9514-eace-6bb2f84e443c</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Mon, 01 Apr 2019 00:48:48 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/2799788/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2019-3-1%2F12197953-48000-2-6d901dc260629.mp3" length="28643195" type="audio/mpeg"/>
+			<itunes:summary>&lt;p&gt;In this episode of Modern Enterprise Podcast, we talk with William Morgan, CEO of Buoyant.io about Linkerd and how it compares with istio and others in the Service Mesh ecosystem.&amp;nbsp;&lt;/p&gt;
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>1790</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:season>2</itunes:season>
+			<itunes:episode>3</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[Blockchain Databases: A Conversation with Brian Platz of Fluree]]></title>
+			<description><![CDATA[In this episode of Modern Enterprise Podcast, we talk with Brian Platz, Founder and CEO of Fluree on Blockchain Databases, how Fluree is addressing the market, the use cases for Blockchain databases and the future of Blockchain
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/Blockchain-Databases-A-Conversation-with-Brian-Platz-of-Fluree-e2dd8n</link>
+			<guid isPermaLink="false">3bdccbd3-8590-1ed3-2e67-27c4fdda7453</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Mon, 15 Oct 2018 05:00:29 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/1536727/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2018-9-15%2F5157600-48000-2-118339f5d453b.mp3" length="40888859" type="audio/mpeg"/>
+			<itunes:summary>In this episode of Modern Enterprise Podcast, we talk with Brian Platz, Founder and CEO of Fluree on Blockchain Databases, how Fluree is addressing the market, the use cases for Blockchain databases and the future of Blockchain
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>2555</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:season>2</itunes:season>
+			<itunes:episode>4</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[Digital Twins: A Conversation with Simon Crosby]]></title>
+			<description><![CDATA[In this episode of Modern Enterprise Podcast, Rishidot Research spoke with Simon Crosby, CTO of Swim.ai. In this episode, we are talking about distributed computing, edge, machine learning at edge, the idea of digital twins and also about Google's Edge TPU announcement
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/Digital-Twins-A-Conversation-with-Simon-Crosby-e1td1o</link>
+			<guid isPermaLink="false">45daedf2-b1e6-c424-86b9-a0875f482d6d</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Mon, 30 Jul 2018 05:54:35 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/1012216/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2018-6-30%2F3832238-48000-2-89b7f5ee6136d.mp3" length="43860254" type="audio/mpeg"/>
+			<itunes:summary>In this episode of Modern Enterprise Podcast, Rishidot Research spoke with Simon Crosby, CTO of Swim.ai. In this episode, we are talking about distributed computing, edge, machine learning at edge, the idea of digital twins and also about Google&apos;s Edge TPU announcement
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>2741</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:season>2</itunes:season>
+			<itunes:episode>2</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[What is Serverless? A Conversation with Matt Gillard]]></title>
+			<description><![CDATA[We are starting season 2 of Modern Enterprise Podcast. This is a follow up to my blog post on StackSense.io where I argued in favor of retiring the term Serverless because of the confusion created by the cloud provider's marketing. Matt puts forward his views on "What is Serverless?". tl:dr: Serverless is event based architectures.
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/What-is-Serverless--A-Conversation-with-Matt-Gillard-e1ped0</link>
+			<guid isPermaLink="false">0e8a1e13-471f-6c7f-ce99-63b70a562a51</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Thu, 21 Jun 2018 07:00:00 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/882528/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2018-6-10%2F3562336-48000-2-16404844b9f6f.mp3" length="27052364" type="audio/mpeg"/>
+			<itunes:summary>We are starting season 2 of Modern Enterprise Podcast. This is a follow up to my blog post on StackSense.io where I argued in favor of retiring the term Serverless because of the confusion created by the cloud provider&apos;s marketing. Matt puts forward his views on &quot;What is Serverless?&quot;. tl:dr: Serverless is event based architectures.
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>1690</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[GitOps, Observability and AI with Alexis Richardson of Weaveworks]]></title>
+			<description><![CDATA[In this episode, we talk with Alexis Richardson, CEO of Weaveworks on GitOps, Observability and the use of Machine Learning and AI in Observability. 
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/GitOps--Observability-and-AI-with-Alexis-Richardson-of-Weaveworks-e171h8</link>
+			<guid isPermaLink="false">214ce2c8-2107-d73e-71bd-9542f884835c</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Sun, 18 Mar 2018 01:07:05 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/279528/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2018-2-18%2F1899105-48000-2-35ab415260ddb.mp3" length="33089577" type="audio/mpeg"/>
+			<itunes:summary>In this episode, we talk with Alexis Richardson, CEO of Weaveworks on GitOps, Observability and the use of Machine Learning and AI in Observability. 
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>2068</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:season>2</itunes:season>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[AI in the Enterprise with Sam Charrington]]></title>
+			<description><![CDATA[In this episode, we talk with Sam Charrington of Cloud Pulse on the trends shaping AI adoption in the enterprise. Sam also hosts a popular podcast called "This Week in ML and AI"
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/AI-in-the-Enterprise-with-Sam-Charrington-e16fss</link>
+			<guid isPermaLink="false">c40f30d2-c808-aaec-8d36-9df14027fbe4</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Wed, 14 Mar 2018 02:05:57 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/261468/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2018-2-14%2F1851741-48000-2-9fa2a610161d5.mp3" length="51443782" type="audio/mpeg"/>
+			<itunes:summary>In this episode, we talk with Sam Charrington of Cloud Pulse on the trends shaping AI adoption in the enterprise. Sam also hosts a popular podcast called &quot;This Week in ML and AI&quot;
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>3215</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:season>1</itunes:season>
+			<itunes:episode>6</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[Composable Infrastructure Automation with Rob Hirschfeld]]></title>
+			<description><![CDATA[In this podcast, I talk with Rob Hirschfeld, founder of RackN, on composable infrastructure, Kubernetes, OpenStack and more
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/Composable-Infrastructure-Automation-with-Rob-Hirschfeld-e15uhi</link>
+			<guid isPermaLink="false">eae15146-a32a-18f3-6ef9-4c6cbaec33e5</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Sat, 10 Mar 2018 02:14:17 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/243698/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2018-2-10%2F1806238-44100-2-b741b0b25844f.mp3" length="37603307" type="audio/mpeg"/>
+			<itunes:summary>In this podcast, I talk with Rob Hirschfeld, founder of RackN, on composable infrastructure, Kubernetes, OpenStack and more
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>2349</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:season>1</itunes:season>
+			<itunes:episode>5</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[Services Delivery for Modern Enterprise with Jeff Sussna]]></title>
+			<description><![CDATA[In this episode, Jeff Sussna, thought leader, author and speaker, talks about DevOps, Design Thinking and Services Delivery
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/Services-Delivery-for-Modern-Enterprise-with-Jeff-Sussna-e15ubl</link>
+			<guid isPermaLink="false">92bd40dd-6d42-4f38-fdea-571acc38179e</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Sat, 10 Mar 2018 00:31:41 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/243509/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2018-2-10%2F1805796-44100-2-d3e33c2012526.mp3" length="34330530" type="audio/mpeg"/>
+			<itunes:summary>In this episode, Jeff Sussna, thought leader, author and speaker, talks about DevOps, Design Thinking and Services Delivery
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>2145</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:season>1</itunes:season>
+			<itunes:episode>2</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[Services as a Platform with James Urquhart]]></title>
+			<description><![CDATA[In this episode, we talk to James Urquhart, Dell Technologies (at the time of recording and currently at AWS) on his idea of Services as a platform. James has been talking about this idea for quite some time and this discussion will help enterprise decision makers understand the world of cloud services
+
+--- 
+
+Support this podcast: <a href="https://anchor.fm/modernenterprise/support" rel="payment">https://anchor.fm/modernenterprise/support</a>]]></description>
+			<link>https://anchor.fm/modernenterprise/episodes/Services-as-a-Platform-with-James-Urquhart-e15ubi</link>
+			<guid isPermaLink="false">4ee641b8-38c8-0bd9-1dd3-53c3f0123b49</guid>
+			<dc:creator><![CDATA[Krishnan Subramanian]]></dc:creator>
+			<pubDate>Sat, 10 Mar 2018 00:28:22 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/2cde284/podcast/play/243506/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2018-2-10%2F1805776-44100-2-240d9f0ee7b6.mp3" length="29677347" type="audio/mpeg"/>
+			<itunes:summary>In this episode, we talk to James Urquhart, Dell Technologies (at the time of recording and currently at AWS) on his idea of Services as a platform. James has been talking about this idea for quite some time and this discussion will help enterprise decision makers understand the world of cloud services
+
+--- 
+
+Support this podcast: &lt;a href=&quot;https://anchor.fm/modernenterprise/support&quot; rel=&quot;payment&quot;&gt;https://anchor.fm/modernenterprise/support&lt;/a&gt;</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>1854</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/370473/370473-1520642377363-01675ff8a1d3f.jpg"/>
+			<itunes:season>1</itunes:season>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+	</channel>
+</rss>

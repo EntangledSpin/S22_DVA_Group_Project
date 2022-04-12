@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:anchor="https://anchor.fm/xmlns">
+	<channel>
+		<title><![CDATA[Crackhead Energy]]></title>
+		<description><![CDATA[Just two roommates and a podcast.]]></description>
+		<link>https://anchor.fm/lauryn-kalkowski</link>
+		<image>
+			<url>https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2651732/2651732-1573574578125-122d9f9ccdd6f.jpg</url>
+			<title>Crackhead Energy</title>
+			<link>https://anchor.fm/lauryn-kalkowski</link>
+		</image>
+		<generator>Anchor Podcasts</generator>
+		<lastBuildDate>Wed, 01 Apr 2020 16:54:47 GMT</lastBuildDate>
+		<atom:link href="https://anchor.fm/s/1066cf50/podcast/rss" rel="self" type="application/rss+xml"/>
+		<author><![CDATA[Lauryn Kalkowski]]></author>
+		<copyright><![CDATA[Lauryn Kalkowski]]></copyright>
+		<language><![CDATA[en]]></language>
+		<atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+		<itunes:author>Lauryn Kalkowski</itunes:author>
+		<itunes:summary>Just two roommates and a podcast.</itunes:summary>
+		<itunes:type>episodic</itunes:type>
+		<itunes:owner>
+			<itunes:name>Lauryn Kalkowski</itunes:name>
+			<itunes:email>podcasts30+1066cf50@anchor.fm</itunes:email>
+		</itunes:owner>
+		<itunes:explicit>No</itunes:explicit>
+		<itunes:category text="Comedy"/>
+		<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2651732/2651732-1573574578125-122d9f9ccdd6f.jpg"/>
+		<item>
+			<title><![CDATA[Expectations vs Reality]]></title>
+			<description><![CDATA[<p>Listen as we talk about college life and answer questions from a high school senior!</p>
+]]></description>
+			<link>https://anchor.fm/lauryn-kalkowski/episodes/Expectations-vs-Reality-e99s14</link>
+			<guid isPermaLink="false">0bf37eaf-f214-9ade-0440-2f3ca141d46b</guid>
+			<dc:creator><![CDATA[Lauryn Kalkowski]]></dc:creator>
+			<pubDate>Mon, 02 Dec 2019 13:38:11 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/1066cf50/podcast/play/8760804/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2019-11-2%2F36316475-44100-2-9e67345635531.m4a" length="33346104" type="audio/x-m4a"/>
+			<itunes:summary>&lt;p&gt;Listen as we talk about college life and answer questions from a high school senior!&lt;/p&gt;
+</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>1001</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2651732/2651732-1573574578125-122d9f9ccdd6f.jpg"/>
+			<itunes:season>1</itunes:season>
+			<itunes:episode>2</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[Episode 1: Get To Know Us]]></title>
+			<description><![CDATA[<p>Get to know us through our roommate tag!</p>
+]]></description>
+			<link>https://anchor.fm/lauryn-kalkowski/episodes/Episode-1-Get-To-Know-Us-e8viqp</link>
+			<guid isPermaLink="false">5e676108-0664-faf7-6a4a-f0264f628aad</guid>
+			<dc:creator><![CDATA[Lauryn Kalkowski]]></dc:creator>
+			<pubDate>Wed, 13 Nov 2019 05:45:15 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/1066cf50/podcast/play/8423705/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2019-10-13%2F34015031-44100-2-a1b0be3b629e5.mp3" length="38055938" type="audio/mpeg"/>
+			<itunes:summary>&lt;p&gt;Get to know us through our roommate tag!&lt;/p&gt;
+</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>1189</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2651732/2651732-1573574578125-122d9f9ccdd6f.jpg"/>
+			<itunes:season>1</itunes:season>
+			<itunes:episode>1</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+	</channel>
+</rss>

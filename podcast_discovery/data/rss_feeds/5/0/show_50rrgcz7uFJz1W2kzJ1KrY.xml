@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:anchor="https://anchor.fm/xmlns">
+	<channel>
+		<title><![CDATA[KELECHUKWU PETER PODCAST ]]></title>
+		<description><![CDATA[A lot of factors play a role in staying healthy. In turn, good health can decrease your risk of developing certain conditions. These include heart disease, stroke, some cancers, and injuries. Learn what you can do to maintain your and your family’s health.]]></description>
+		<link>https://anchor.fm/kelechukwu-peter</link>
+		<image>
+			<url>https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2869877/2869877-1576610699737-402a485a584de.jpg</url>
+			<title>KELECHUKWU PETER PODCAST </title>
+			<link>https://anchor.fm/kelechukwu-peter</link>
+		</image>
+		<generator>Anchor Podcasts</generator>
+		<lastBuildDate>Wed, 01 Apr 2020 16:54:47 GMT</lastBuildDate>
+		<atom:link href="https://anchor.fm/s/11b3ac34/podcast/rss" rel="self" type="application/rss+xml"/>
+		<author><![CDATA[Kelechukwu Peter]]></author>
+		<copyright><![CDATA[Kelechukwu Peter]]></copyright>
+		<language><![CDATA[en]]></language>
+		<atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+		<itunes:author>Kelechukwu Peter</itunes:author>
+		<itunes:summary>A lot of factors play a role in staying healthy. In turn, good health can decrease your risk of developing certain conditions. These include heart disease, stroke, some cancers, and injuries. Learn what you can do to maintain your and your family’s health.</itunes:summary>
+		<itunes:type>episodic</itunes:type>
+		<itunes:owner>
+			<itunes:name>Kelechukwu Peter</itunes:name>
+			<itunes:email>podcasts35+11b3ac34@anchor.fm</itunes:email>
+		</itunes:owner>
+		<itunes:explicit>No</itunes:explicit>
+		<itunes:category text="Health &amp; Fitness">
+			<itunes:category text="Nutrition"/>
+		</itunes:category>
+		<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2869877/2869877-1576610699737-402a485a584de.jpg"/>
+		<item>
+			<title><![CDATA[How to Make Coffee without a Coffee Maker]]></title>
+			<description><![CDATA[If you rely on your morning cup of coffee to wake yourself up, discovering that your coffee maker has broken can be a nightmare. Never fear, though: there are many ways to prepare coffee even without the use of a coffee maker. Here are a few different techniques you can try.
+]]></description>
+			<link>https://anchor.fm/kelechukwu-peter/episodes/How-to-Make-Coffee-without-a-Coffee-Maker-e9k6cv</link>
+			<guid isPermaLink="false">aba2f321-d3b6-4075-b350-79a12444da4a</guid>
+			<dc:creator><![CDATA[Kelechukwu Peter]]></dc:creator>
+			<pubDate>Thu, 19 Dec 2019 03:26:57 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/11b3ac34/podcast/play/9099103/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-03-05%2F1c12402b011dc75cb7917f98d794ae1a.m4a" length="3293018" type="audio/x-m4a"/>
+			<itunes:summary>If you rely on your morning cup of coffee to wake yourself up, discovering that your coffee maker has broken can be a nightmare. Never fear, though: there are many ways to prepare coffee even without the use of a coffee maker. Here are a few different techniques you can try.
+</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>203</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2869877/2869877-1576610699737-402a485a584de.jpg"/>
+			<itunes:season>1</itunes:season>
+			<itunes:episode>2</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[What You Can Do to Maintain Your Health]]></title>
+			<description><![CDATA[A lot of factors play a role in staying healthy. In turn, good health can decrease your risk of developing certain conditions. These include heart disease, stroke, some cancers, and injuries. Learn what you can do to maintain your and your family’s health.
+]]></description>
+			<link>https://anchor.fm/kelechukwu-peter/episodes/What-You-Can-Do-to-Maintain-Your-Health-e9j3i0</link>
+			<guid isPermaLink="false">db174484-3dc4-401d-a53e-7347c84938ab</guid>
+			<dc:creator><![CDATA[Kelechukwu Peter]]></dc:creator>
+			<pubDate>Tue, 17 Dec 2019 19:21:24 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/11b3ac34/podcast/play/9063424/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-03-04%2F77ec577de610cf131d7dcedd48e3d618.m4a" length="4976475" type="audio/x-m4a"/>
+			<itunes:summary>A lot of factors play a role in staying healthy. In turn, good health can decrease your risk of developing certain conditions. These include heart disease, stroke, some cancers, and injuries. Learn what you can do to maintain your and your family’s health.
+</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>307</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2869877/2869877-1576610699737-402a485a584de.jpg"/>
+			<itunes:season>1</itunes:season>
+			<itunes:episode>1</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+	</channel>
+</rss>

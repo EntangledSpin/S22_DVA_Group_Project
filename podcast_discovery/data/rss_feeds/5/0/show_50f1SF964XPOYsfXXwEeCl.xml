@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:anchor="https://anchor.fm/xmlns">
+	<channel>
+		<title><![CDATA[Oops I Broke My Spork]]></title>
+		<description><![CDATA[Life sucks and I KNOW IT, gain insight from people who are barely adults as we navigate life and overcome life’s challenges. All while we remain seemingly hopeful and hopeless @ the same time.]]></description>
+		<link>https://anchor.fm/myspork</link>
+		<image>
+			<url>https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2506414/2506414-1572015808131-b8cb66adcfcce.jpg</url>
+			<title>Oops I Broke My Spork</title>
+			<link>https://anchor.fm/myspork</link>
+		</image>
+		<generator>Anchor Podcasts</generator>
+		<lastBuildDate>Wed, 01 Apr 2020 16:54:47 GMT</lastBuildDate>
+		<atom:link href="https://anchor.fm/s/f891278/podcast/rss" rel="self" type="application/rss+xml"/>
+		<author><![CDATA[Kat ]]></author>
+		<copyright><![CDATA[Kat ]]></copyright>
+		<language><![CDATA[en]]></language>
+		<atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+		<itunes:author>Kat </itunes:author>
+		<itunes:summary>Life sucks and I KNOW IT, gain insight from people who are barely adults as we navigate life and overcome life’s challenges. All while we remain seemingly hopeful and hopeless @ the same time.</itunes:summary>
+		<itunes:type>episodic</itunes:type>
+		<itunes:owner>
+			<itunes:name>Kat </itunes:name>
+			<itunes:email>podcasts26+f891278@anchor.fm</itunes:email>
+		</itunes:owner>
+		<itunes:explicit>Yes</itunes:explicit>
+		<itunes:category text="Comedy">
+			<itunes:category text="Comedy Interviews"/>
+		</itunes:category>
+		<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2506414/2506414-1572015808131-b8cb66adcfcce.jpg"/>
+		<item>
+			<title><![CDATA[Home Not So Sweet Home (pt. 1)]]></title>
+			<description><![CDATA[Kicking off the relationship series with a talk about a semi-current living situation. Hear the thoughts from 2 roomies and the great cleaning debate. Listen closely to pick up on both areas of the discussions where maturity was present and where maturity was lacking - and where improvement needs to occur!! Tune in for a later episode on tips and tricks to diffuse and deal with unideal roommate situations.
+]]></description>
+			<link>https://anchor.fm/myspork/episodes/Home-Not-So-Sweet-Home-pt--1-e8jd3t</link>
+			<guid isPermaLink="false">265a33c7-f984-5d65-11ea-8fe92840bcd5</guid>
+			<dc:creator><![CDATA[Kat ]]></dc:creator>
+			<pubDate>Tue, 12 Nov 2019 00:54:10 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/f891278/podcast/play/8024637/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-02-27%2Fa253e613687da5685d7d5e326c61e9c7.m4a" length="32580755" type="audio/x-m4a"/>
+			<itunes:summary>Kicking off the relationship series with a talk about a semi-current living situation. Hear the thoughts from 2 roomies and the great cleaning debate. Listen closely to pick up on both areas of the discussions where maturity was present and where maturity was lacking - and where improvement needs to occur!! Tune in for a later episode on tips and tricks to diffuse and deal with unideal roommate situations.
+</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>2014</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2506414/2506414-1572015808131-b8cb66adcfcce.jpg"/>
+			<itunes:season>1</itunes:season>
+			<itunes:episode>2</itunes:episode>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[Spork Show]]></title>
+			<description><![CDATA[Welcome to the spork show! This is just a formal introduction to my show and what this season will be about!! Tune in next time to hear all about the struggle of finding that perfect college roomie!
+]]></description>
+			<link>https://anchor.fm/myspork/episodes/Spork-Show-e8gdc7</link>
+			<guid isPermaLink="false">bbb2f2c6-d48c-dfa8-48c9-2050638873c3</guid>
+			<dc:creator><![CDATA[Kat ]]></dc:creator>
+			<pubDate>Thu, 31 Oct 2019 22:28:52 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/f891278/podcast/play/7926599/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-02-27%2F9c5f90bf98695dfe6c49ec43403dd87d.m4a" length="3207322" type="audio/x-m4a"/>
+			<itunes:summary>Welcome to the spork show! This is just a formal introduction to my show and what this season will be about!! Tune in next time to hear all about the struggle of finding that perfect college roomie!
+</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>198</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2506414/2506414-1572015808131-b8cb66adcfcce.jpg"/>
+			<itunes:season>1</itunes:season>
+			<itunes:episode>1</itunes:episode>
+			<itunes:episodeType>trailer</itunes:episodeType>
+		</item>
+		<item>
+			<title><![CDATA[Pilot]]></title>
+			<description><![CDATA[Quick Intro to what Oops I Broke My Spork is about, more detailed intro episode coming soon!
+]]></description>
+			<link>https://anchor.fm/myspork/episodes/Pilot-e8are4</link>
+			<guid isPermaLink="false">f7214f1e-db1c-d6fb-f9c6-214ed4b39a26</guid>
+			<dc:creator><![CDATA[Kat ]]></dc:creator>
+			<pubDate>Mon, 28 Oct 2019 22:58:48 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/f891278/podcast/play/7744388/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-02-27%2Feeb47fcb99ab2a7738b15c02ce5b174c.m4a" length="2223434" type="audio/x-m4a"/>
+			<itunes:summary>Quick Intro to what Oops I Broke My Spork is about, more detailed intro episode coming soon!
+</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>137</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/2506414/2506414-1572015808131-b8cb66adcfcce.jpg"/>
+			<itunes:season>1</itunes:season>
+			<itunes:episodeType>trailer</itunes:episodeType>
+		</item>
+	</channel>
+</rss>
