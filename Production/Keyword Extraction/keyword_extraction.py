@@ -4,6 +4,7 @@
 #       instead of running all of them at once
 from db_core.database import Database
 import time
+import word_lists as wl
 import keyword_extraction_functions as kef
 
 global_start_time = time.time()
@@ -13,11 +14,12 @@ db = Database()
 
 # pull back a corpus of words in the NLTK Wordnet library
 # we will use this list to remove any keywords that appear as gibberish (ex: "dfjskdjdk")
-word_list = kef.wordnet()
+word_list = wl.wordnet_corpus
 
 # bring in all show ids that have at least 10 episodes
 # we want to remove small outliers because they may not generate representative keyword lists
 shows = kef.import_shows(db)
+shows = shows[:2]
 
 # the shows and keywords lists will be appended to this list, and then loaded into the db
 append_to_df = []
