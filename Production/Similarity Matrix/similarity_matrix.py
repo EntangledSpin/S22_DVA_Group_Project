@@ -47,4 +47,4 @@ df2.drop(columns =["pairs"], inplace = True)
 df3 = df2[['show_id_1', 'show_id_2','similarity']]
 
 #move to datalake
-df3.to_sql('all_similarity_matrix', index=False,schema='datalake', con=db.engine, if_exists="replace")
+df3.to_sql('all_similarity_matrix', index=False,schema='warehouse', con=db.engine, if_exists="replace")
