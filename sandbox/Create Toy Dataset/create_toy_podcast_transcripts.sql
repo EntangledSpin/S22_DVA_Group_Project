@@ -2,10 +2,17 @@
 /* that have at least 10 episodes each */
 
 /* pick 100 random show that have at least 10 episodes */
-create table datalake.toy_sorted_shows as
+create table datalake.toy_sorted_shows_temp as
 select t1.*
 from datalake.sorted_shows t1
 order by random() limit 100;
+
+create table datalake.toy_sorted_shows as
+select t1.*
+from datalake.toy_sorted_shows_temp t1
+order by count;
+
+drop table datalake.toy_sorted_shows_temp;
 
 /* get all the transcripts for those 100 shows */
 create table datalake.toy_podcast_transcripts as
