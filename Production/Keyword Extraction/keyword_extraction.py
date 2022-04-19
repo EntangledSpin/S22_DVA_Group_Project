@@ -19,7 +19,6 @@ word_list = wl.wordnet_corpus
 # bring in all show ids that have at least 10 episodes
 # we want to remove small outliers because they may not generate representative keyword lists
 shows = kef.import_shows(db)
-shows = shows[:2]
 
 # the shows and keywords lists will be appended to this list, and then loaded into the db
 append_to_df = []
