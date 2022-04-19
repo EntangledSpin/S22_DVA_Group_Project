@@ -1,8 +1,8 @@
 import networkx as nx
 from networkx.algorithms import community
-from db_core.database import Database
+from podcast_discovery.db_core.database import Database
 import pandas as pd
-
+from podcast_discovery.config import schema,similarity_matrix_table_name,coordinates_table_name
 
 
 class Coordinates:
@@ -15,8 +15,8 @@ class Coordinates:
         self.communities = None
         self.pos_df = pd.DataFrame()
 
-    def generate(self,table: str, similarity=0.0, layout='kamada',
-                 source='datalake.sample_similarity_matrix', schema='datalake'):
+    def generate(self,table = coordinates_table_name, similarity=0.0, layout='kamada',
+                 source=f'{schema}.{similarity_matrix_table_name}', schema=schema):
 
         """
             Function to write coordinates for graph nodes in similarity matrix.
@@ -86,7 +86,7 @@ class Coordinates:
                     coms.append(self.communities.index(com))
                     break
         data = {'show_id': nodes, 'x': x, 'y': y, 'community': coms}
-        print(data)
+
         self.pos_df = pd.DataFrame(data)
 
     def upload_df(self, table, schema):

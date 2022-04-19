@@ -2,6 +2,12 @@ from podcast_discovery.data.upload import RSS, Transcripts
 from podcast_discovery.keywords.keyword_extraction import Keywords
 from podcast_discovery.visualization.similarity_matrix import SimilarityMatrix
 from podcast_discovery.visualization.coordinates import Coordinates
+from podcast_discovery.db_core.database import Database
+
+
+
+
+
 
 class Pipeline:
 
@@ -11,26 +17,26 @@ class Pipeline:
         self.keywords = Keywords()
         self.similarity = SimilarityMatrix()
         self.coordinates = Coordinates()
+        self.database = Database()
 
     def run(self):
         print('uploading transcripts...')
-        #self.transcripts.multi_thread_import()
-        print('transcripts successfully uploaded to datalake.sample_podcast_transcripts')
+        #self.transcripts.multi_thread_import(schema='datalake', table='sample_podcast_transcripts')
+
 
         print('uploading rss feeds...')
-        #self.rss.multi_thread_import()
-        print('transcripts successfully uploaded to datalake.sample_rss_extracts')
+        #self.rss.multi_thread_import(schema='datalake', table='sample_podcast_rss')
+
 
         print('extracting keywords...')
-        #self.keywords.run()
-        print('keywords successfully uploaded to datalake.sample_shows_and_keywords')
+        self.keywords.run()
+
 
         print('building similarity matrix...')
         self.similarity.run()
 
         print('generating coordinates...')
-        self.coordinates.generate('sample_tableau_coordinates', 0.1, 'kamada',
-                                  schema='datalake')
+        self.coordinates.generate()
 
 
 

@@ -8,7 +8,7 @@ from podcast_discovery.keywords import custom_stopwords
 import itertools
 from collections import Counter
 from nltk.corpus import wordnet as wn
-
+from podcast_discovery.config import schema, transcript_table_name,keyword_table_name
 # set yake parameters
 language = "en"
 max_ngram_size = 2
@@ -18,6 +18,8 @@ windows_size = 3
 num_of_keywords = 5
 features = None
 stop_words = custom_stopwords.stopwords_starter_list
+
+
 
 # wordnet
 #      arguments: None
@@ -36,9 +38,9 @@ def wordnet():
 #      returns:   shows - a list of show_ids
 #
 def get_shows(db):
-    shows = db.execute_sql('''
+    shows = db.execute_sql(f'''
         select distinct show_uri_id
-        from datalake.sample_podcast_transcripts;
+        from {schema}.{transcript_table_name};
         ''', return_list=True)
 
     return shows
@@ -67,11 +69,11 @@ def keyword_extraction(show, final_lst, db, word_list):
                                                 windowsSize=windows_size,)
 
     # grab all the transcripts for the current show
-    episodes = db.execute_sql('''
+    episodes = db.execute_sql(f'''
             select lower(transcript)
-            from datalake.sample_podcast_transcripts
-            WHERE show_uri_id = '{REPLACEME_ID}';
-        '''.format(REPLACEME_ID=show), return_list=True)
+            from {schema}.{transcript_table_name}
+            WHERE show_uri_id = '{show}';
+        ''', return_list=True)
 
     # loop through each episode for the current show
     for id in episodes:
@@ -174,8 +176,8 @@ def load_data_to_db(append_to_df, db):
 
     df = pd.DataFrame(append_to_df, columns=['show_id', 'keyword_counts'])
 
-    df.to_sql('sample_shows_and_keywords', index=False,
-              schema='datalake', con=db.engine, if_exists="replace")
+    df.to_sql(keyword_table_name, index=False,
+              schema=schema, con=db.engine, if_exists="replace")
 
 
 

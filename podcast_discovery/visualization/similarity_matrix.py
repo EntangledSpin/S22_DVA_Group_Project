@@ -1,11 +1,9 @@
 from itertools import combinations
-import time
-from collections import Counter
 import math
 import pandas as pd
 import ast
-from db_core.database import Database
-
+from podcast_discovery.db_core.database import Database
+from podcast_discovery.config import schema,keyword_table_name,similarity_matrix_table_name
 
 
 class SimilarityMatrix:
@@ -51,15 +49,15 @@ class SimilarityMatrix:
         self.matrix_df = df[['show_id_1', 'show_id_2', 'similarity']]
 
     def upload_matrix_df(self):
-        self.matrix_df.to_sql('sample_similarity_matrix', index=False,
-                              schema='datalake', con=self.db.engine,
+        self.matrix_df.to_sql(similarity_matrix_table_name, index=False,
+                              schema=schema, con=self.db.engine,
                               if_exists="replace")
 
 
     def get_keywords(self):
         # get list of keywords_count dictionaries
         keywords = self.db.execute_sql(
-            sql='SELECT sample_shows_and_keywords.keyword_counts FROM datalake.sample_shows_and_keywords',
+            sql=f'SELECT {keyword_table_name}.keyword_counts FROM {schema}.{keyword_table_name}',
             return_list=True)
 
         keywords = [ast.literal_eval(i) for i in keywords]
@@ -68,7 +66,7 @@ class SimilarityMatrix:
 
     def get_shows_ids(self):
         # get list of show_ids
-        return self.db.execute_sql(sql='SELECT sample_shows_and_keywords.show_id FROM datalake.sample_shows_and_keywords', return_list=True)
+        return self.db.execute_sql(sql=f'SELECT {keyword_table_name}.show_id FROM {schema}.{keyword_table_name}', return_list=True)
 
 
     def counter_cosine_similarity(self,c1, c2):

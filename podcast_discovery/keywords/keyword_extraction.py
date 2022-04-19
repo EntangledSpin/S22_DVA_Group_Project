@@ -2,7 +2,7 @@
 # see keyword_extraction_functions.py for the functions implemented in this program
 # note: if this process gives you lots of exceptions, it will help to run small batches of shows
 #       instead of running all of them at once
-from db_core.database import Database
+from podcast_discovery.db_core.database import Database
 import time
 from podcast_discovery.keywords import word_lists as wl
 from podcast_discovery.keywords import keyword_extraction_functions as kef

@@ -1,13 +1,11 @@
 import os
-import feedparser as fp
+
 from bs4 import BeautifulSoup
 import pandas as pd
-from db_core.database import Database
+from podcast_discovery.db_core.database import Database
 import json
-import psycopg2
-import sqlalchemy
 import re
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 
 db = Database()
 sql_folder = os.path.join(os.path.abspath("."), 'sql')
@@ -22,9 +20,12 @@ class RSS:
         self.abs_path = os.path.abspath(".")
         self.directory = os.path.join(self.abs_path, 'data/rss_feeds')
         self.error_list = []
+        self.schema = None
+        self.table = None
 
-    def multi_thread_import(self):
-
+    def multi_thread_import(self,schema,table):
+        self.schema = schema
+        self.table = table
         threads = []
 
         for root, subdirectories, files in os.walk(self.directory):  # Mechanism to iterate through subdirectories
@@ -115,8 +116,8 @@ class RSS:
 
     def upload_rss_df(self, df):
 
-        df.to_sql('sample_rss_extract', index=False,
-                  schema='datalake', con=db.engine, if_exists="append")
+        df.to_sql(self.table, index=False,
+                  schema=self.schema, con=db.engine, if_exists="append")
 
 
 
@@ -125,6 +126,8 @@ class Transcripts:
 
     def __init__(self):
         self.transcript_samples_path = os.path.join(os.path.abspath("."), 'data/transcripts')
+        self.schema = None
+        self.table = None
 
     def get_file_count(self):
 
@@ -138,7 +141,9 @@ class Transcripts:
 
         return count
 
-    def multi_thread_import(self):
+    def multi_thread_import(self,schema,table):
+        self.schema = schema
+        self.table = table
 
         threads = []
 
